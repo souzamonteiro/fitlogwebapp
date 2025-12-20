@@ -3,7 +3,15 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Comprehensive Health & Fitness Assessment</title>
+    <title>Comprehensive Health & Fitness Assessment with History</title>
+    
+    <!-- CSS Libraries -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" 
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" 
+        crossorigin="anonymous" 
+        referrerpolicy="no-referrer" />
+    
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root { 
@@ -13,9 +21,9 @@
             --border-radius: 10px; --shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         body { font-family: -apple-system, sans-serif; background: var(--light-gray); color: var(--text-color); padding: 20px; }
-        .container { max-width: 1200px; margin: 0 auto; }
+        .container { max-width: 1400px; margin: 0 auto; }
         .card { background: white; border-radius: var(--border-radius); margin-bottom: 20px; box-shadow: var(--shadow); overflow: hidden; }
-        .card-header { background: var(--primary-color); color: white; padding: 15px; font-weight: bold; }
+        .card-header { background: var(--primary-color); color: white; padding: 15px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
         .card-content { padding: 20px; }
         .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
         .form-group { margin-bottom: 15px; }
@@ -25,10 +33,17 @@
         .form-row { display: flex; gap: 15px; margin-bottom: 15px; }
         .form-row .form-group { flex: 1; margin-bottom: 0; }
         .form-section { margin: 20px 0; }
-        .form-section-title { font-weight: bold; margin-bottom: 10px; color: var(--primary-color); padding-bottom: 5px; border-bottom: 1px solid #f0f0f0; }
+        .form-section-title { font-weight: bold; margin-bottom: 10px; color: var(--primary-color); padding-bottom: 5px; border-bottom: 1px solid #f0f0f0; display: flex; justify-content: space-between; align-items: center; }
         .error { color: var(--danger-color); font-size: 12px; margin-top: 5px; }
-        .btn { padding: 12px 20px; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; text-align: center; display: inline-block; }
-        .btn-primary { background: var(--primary-color); color: white; width: 100%; }
+        .btn { padding: 12px 20px; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; text-align: center; display: inline-block; transition: opacity 0.2s; }
+        .btn:hover { opacity: 0.9; }
+        .btn-primary { background: var(--primary-color); color: white; }
+        .btn-success { background: var(--success-color); color: white; }
+        .btn-warning { background: var(--warning-color); color: white; }
+        .btn-danger { background: var(--danger-color); color: white; }
+        .btn-small { padding: 6px 12px; font-size: 14px; }
+        .btn-icon { padding: 8px; border-radius: 6px; min-width: 36px; }
+        .btn-block { width: 100%; }
         .results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0; }
         .result-card { background: white; border-radius: var(--border-radius); padding: 15px; text-align: center; box-shadow: var(--shadow); border-left: 4px solid var(--primary-color); }
         .result-value { font-size: 24px; font-weight: bold; color: var(--primary-color); }
@@ -69,13 +84,55 @@
         .summary-score { font-size: 48px; font-weight: bold; text-align: center; margin: 10px 0; }
         .summary-text { text-align: center; font-size: 18px; opacity: 0.9; }
         .validation-error { border-color: var(--danger-color) !important; }
+        
+        /* History specific styles */
+        .history-controls { display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; }
+        .history-table-container { overflow-x: auto; }
+        .chart-container { margin: 20px 0; background: white; border-radius: var(--border-radius); padding: 20px; box-shadow: var(--shadow); }
+        .chart-title { font-weight: bold; margin-bottom: 15px; color: var(--primary-color); }
+        .history-comparison { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 20px 0; }
+        .comparison-card { background: white; border-radius: var(--border-radius); padding: 20px; box-shadow: var(--shadow); }
+        .comparison-value { font-size: 20px; font-weight: bold; text-align: center; margin: 10px 0; }
+        .comparison-change { text-align: center; font-size: 14px; }
+        .positive-change { color: var(--success-color); }
+        .negative-change { color: var(--danger-color); }
+        .no-change { color: var(--dark-gray); }
+        .date-selector { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
+        .session-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .session-date { font-weight: bold; color: var(--primary-color); }
+        .session-actions { display: flex; gap: 5px; }
+        .export-options { display: flex; gap: 10px; margin-top: 15px; }
+        .dataTables_wrapper { margin-top: 15px; }
+        
+        #historyTable {
+            width: 100% !important;
+            table-layout: fixed;
+        }
+        #historyTable th {
+            min-width: 100px;
+        }
+        #historyTable:not(.display) {
+            display: table;
+        }
+        #historyTable:not(.display) th,
+        #historyTable:not(.display) td {
+            border: 1px solid #dee2e6;
+            padding: 8px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .form-row { flex-direction: column; }
+            .history-controls { flex-direction: column; }
+            .btn { width: 100%; margin-bottom: 5px; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
             <h1>Comprehensive Health & Fitness Assessment</h1>
-            <p>Complete anthropometric, metabolic, and cardiovascular evaluation with personalized prescriptions</p>
+            <p>Complete anthropometric, metabolic, and cardiovascular evaluation with personalized prescriptions and history tracking</p>
         </header>
 
         <div class="tabs">
@@ -83,13 +140,24 @@
             <div class="tab" data-tab="health">Health Metrics</div>
             <div class="tab" data-tab="fitness">Fitness Assessment</div>
             <div class="tab" data-tab="prescription">Exercise Prescription</div>
+            <div class="tab" data-tab="history">History & Progress</div>
             <div class="tab" data-tab="summary">Comprehensive Summary</div>
         </div>
 
         <!-- Tab 1: Body Composition -->
         <div id="tab-composition" class="tab-content active">
             <div class="card">
-                <div class="card-header">Complete Body Composition Analysis</div>
+                <div class="card-header">
+                    Complete Body Composition Analysis
+                    <div>
+                        <button class="btn btn-success btn-small" onclick="saveCurrentSession()">
+                            <i class="fas fa-save"></i> Save Session
+                        </button>
+                        <button class="btn btn-primary btn-small" onclick="loadLatestSession()">
+                            <i class="fas fa-history"></i> Load Last
+                        </button>
+                    </div>
+                </div>
                 <div class="card-content">
                     <div class="form-row">
                         <div class="form-group">
@@ -186,7 +254,16 @@
                         </div>
                     </div>
 
-                    <button class="btn btn-primary" onclick="calculateComposition()">Calculate Body Composition</button>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-block" onclick="calculateComposition()">Calculate Body Composition</button>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success btn-block" onclick="saveCurrentSession()">
+                                <i class="fas fa-save"></i> Save & Calculate
+                            </button>
+                        </div>
+                    </div>
 
                     <div id="resultsComposition" style="display: none;">
                         <div class="results-grid">
@@ -437,7 +514,121 @@
             </div>
         </div>
 
-        <!-- Tab 5: Comprehensive Summary -->
+        <!-- NEW Tab 5: History & Progress -->
+        <div id="tab-history" class="tab-content">
+            <div class="card">
+                <div class="card-header">
+                    History & Progress Tracking
+                    <div>
+                        <button class="btn btn-primary btn-small" onclick="refreshHistory()">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="history-controls">
+                        <button class="btn btn-success" onclick="saveCurrentSession()">
+                            <i class="fas fa-save"></i> Save Current Session
+                        </button>
+                        <button class="btn btn-primary" onclick="loadLatestSession()">
+                            <i class="fas fa-history"></i> Load Latest Session
+                        </button>
+                        <button class="btn btn-warning" onclick="exportHistoryToCSV()">
+                            <i class="fas fa-download"></i> Export to CSV
+                        </button>
+                        <button class="btn btn-danger" onclick="clearAllHistory()">
+                            <i class="fas fa-trash"></i> Clear All History
+                        </button>
+                        <select id="historyFilter" class="form-input" style="max-width: 200px;" onchange="filterHistory()">
+                            <option value="all">All Sessions</option>
+                            <option value="last7">Last 7 days</option>
+                            <option value="last30">Last 30 days</option>
+                            <option value="last90">Last 90 days</option>
+                        </select>
+                    </div>
+
+                    <div class="form-section">
+                        <div class="form-section-title">
+                            <span>📈 Progress Charts</span>
+                            <select id="chartMetric" class="form-input" style="max-width: 200px;" onchange="updateProgressChart()">
+                                <option value="weight">Weight (kg)</option>
+                                <option value="bmi">BMI</option>
+                                <option value="bodyfat">Body Fat %</option>
+                                <option value="whr">Waist-Hip Ratio</option>
+                                <option value="restingHR">Resting HR</option>
+                                <option value="vo2max">VO₂ Max</option>
+                            </select>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="progressChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <div class="form-section-title">📊 Session Comparison</div>
+                        <div class="history-comparison" id="historyComparison">
+                            <div class="comparison-card">
+                                <div class="form-section-title">Weight</div>
+                                <div class="comparison-value" id="comparisonWeight">-</div>
+                                <div class="comparison-change" id="comparisonWeightChange">-</div>
+                            </div>
+                            <div class="comparison-card">
+                                <div class="form-section-title">Body Fat %</div>
+                                <div class="comparison-value" id="comparisonBodyfat">-</div>
+                                <div class="comparison-change" id="comparisonBodyfatChange">-</div>
+                            </div>
+                            <div class="comparison-card">
+                                <div class="form-section-title">BMI</div>
+                                <div class="comparison-value" id="comparisonBMI">-</div>
+                                <div class="comparison-change" id="comparisonBMIChange">-</div>
+                            </div>
+                            <div class="comparison-card">
+                                <div class="form-section-title">WHR</div>
+                                <div class="comparison-value" id="comparisonWHR">-</div>
+                                <div class="comparison-change" id="comparisonWHRChange">-</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <div class="form-section-title">📋 Session History</div>
+                        <div class="history-table-container">
+                            <table id="historyTable" class="display">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Weight (kg)</th>
+                                        <th>BMI</th>
+                                        <th>Body Fat %</th>
+                                        <th>WHR</th>
+                                        <th>Rest HR</th>
+                                        <th>VO₂ Max</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="historyTableBody">
+                                    <!-- Data will be populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="export-options">
+                        <button class="btn btn-warning" onclick="exportHistoryToCSV()">
+                            <i class="fas fa-file-csv"></i> Export to CSV
+                        </button>
+                        <button class="btn btn-primary" onclick="exportHistoryToJSON()">
+                            <i class="fas fa-file-code"></i> Export to JSON
+                        </button>
+                        <button class="btn btn-danger" onclick="clearAllHistory()">
+                            <i class="fas fa-trash"></i> Clear All History
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 6: Comprehensive Summary -->
         <div id="tab-summary" class="tab-content">
             <div class="card">
                 <div class="card-header">Comprehensive Health Summary</div>
@@ -475,40 +666,155 @@
         </div>
     </div>
 
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/zangodb.min.js"></script>
+    
     <script>
-        // ========== CENTRALIZED DATA MODEL ==========
-        const userData = {
-            // Basic info
-            height: null,
-            weight: null,
-            age: null,
-            sex: 'M',
+        // ========== MODEL: DATA STORAGE ==========
+        const HealthModel = {
+            db: null,
+            collection: null,
             
-            // Composition
-            waist: null,
-            hip: null,
-            diameters: { wrist: null, knee: null },
-            skinfolds: {
-                triceps: 12, subscapular: 15, axillary: 10,
-                pectoral: 8, abdominal: 20, suprailiac: 18, thigh: 16
+            async init() {
+                try {
+                    if (typeof zango !== 'undefined') {
+                        this.db = new zango.Db('HealthFitnessDB', 1, {
+                            sessions: ['id', 'timestamp', 'date']
+                        });
+                        this.collection = this.db.collection('sessions');
+                        console.log('ZangoDB initialized successfully');
+                    } else {
+                        console.warn('ZangoDB not available, using localStorage fallback');
+                        this.createFallback();
+                    }
+                } catch (error) {
+                    console.warn('ZangoDB error, using localStorage fallback:', error);
+                    this.createFallback();
+                }
             },
             
-            // Health metrics
-            restingHR: null,
-            systolicBP: null,
-            diastolicBP: null,
-            bloodGlucose: null,
-            totalCholesterol: null,
-            activityLevel: 'moderate',
+            createFallback() {
+                this.collection = {
+                    find: (query) => ({ 
+                        toArray: async () => {
+                            const data = JSON.parse(localStorage.getItem('healthSessions') || '[]');
+                            if (!query || Object.keys(query).length === 0) {
+                                return data;
+                            }
+                            return data.filter(session => {
+                                for (let key in query) {
+                                    if (session[key] !== query[key]) return false;
+                                }
+                                return true;
+                            });
+                        }
+                    }),
+                    insert: async (doc) => {
+                        const data = JSON.parse(localStorage.getItem('healthSessions') || '[]');
+                        data.push(doc);
+                        localStorage.setItem('healthSessions', JSON.stringify(data));
+                        return doc;
+                    },
+                    remove: async (query) => {
+                        const data = JSON.parse(localStorage.getItem('healthSessions') || '[]');
+                        if (!query || Object.keys(query).length === 0) {
+                            localStorage.removeItem('healthSessions');
+                            return { deletedCount: data.length };
+                        }
+                        const initialLength = data.length;
+                        const filtered = data.filter(session => session.id !== query.id);
+                        localStorage.setItem('healthSessions', JSON.stringify(filtered));
+                        return { deletedCount: initialLength - filtered.length };
+                    }
+                };
+            },
+
+            async saveSession(sessionData) {
+                const session = {
+                    ...sessionData,
+                    id: Date.now(),
+                    timestamp: new Date().toISOString(),
+                    date: new Date().toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'short',
+                        day: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    })
+                };
+                
+                await this.collection.insert(session);
+                return session;
+            },
+
+            async getSessions(limit = 100) {
+                try {
+                    const sessions = await this.collection.find({}).toArray();
+                    console.log('Raw sessions from DB:', sessions); // DEBUG
+                    
+                    if (!Array.isArray(sessions)) {
+                        console.warn('Sessions is not an array:', sessions);
+                        return [];
+                    }
+                    
+                    return sessions
+                        .filter(session => session && typeof session === 'object')
+                        .sort((a, b) => {
+                            const dateA = a.timestamp ? new Date(a.timestamp) : new Date(0);
+                            const dateB = b.timestamp ? new Date(b.timestamp) : new Date(0);
+                            return dateB - dateA;
+                        })
+                        .slice(0, limit);
+                } catch (error) {
+                    console.error('Error getting sessions:', error);
+                    return [];
+                }
+            },
             
-            // Fitness
-            rmBench: null,
-            rmSquat: null,
-            goal: 'fat_loss'
+            async getLatestSession() {
+                const sessions = await this.getSessions(1);
+                return sessions[0] || null;
+            },
+            
+            async getSession(id) {
+                const sessions = await this.collection.find({ id }).toArray();
+                return sessions[0] || null;
+            },
+            
+            async deleteSession(id) {
+                await this.collection.remove({ id });
+            },
+            
+            async clearAllSessions() {
+                await this.collection.remove();
+            },
+            
+            async getFilteredSessions(filter) {
+                const sessions = await this.getSessions();
+                const now = new Date();
+                
+                switch(filter) {
+                    case 'last7':
+                        const weekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+                        return sessions.filter(s => new Date(s.timestamp) >= weekAgo);
+                    case 'last30':
+                        const monthAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
+                        return sessions.filter(s => new Date(s.timestamp) >= monthAgo);
+                    case 'last90':
+                        const quarterAgo = new Date(now.getTime() - 90 * 24 * 60 * 60 * 1000);
+                        return sessions.filter(s => new Date(s.timestamp) >= quarterAgo);
+                    default:
+                        return sessions;
+                }
+            }
         };
 
-        // ========== ENHANCED FITNESS CALCULATOR LIBRARY ==========
+        // ========== MODEL: FITNESS CALCULATIONS ==========
         const FitnessCalculator = {
+            // ... (ALL YOUR EXISTING CALCULATION FUNCTIONS FROM THE ORIGINAL CODE)
             // Body Composition
             calculateBMI(weightKg, heightCm) {
                 if (!weightKg || !heightCm || heightCm === 0) return null;
@@ -517,7 +823,7 @@
             },
 
             classifyBMI(bmi) {
-                if (!bmi) return { classification: "N/A", className: "" };
+                if (!bmi) return { classification: "N/A", className: "", score: 3 };
                 if (bmi < 18.5) return { classification: "Underweight", className: "classification-warning", score: 3 };
                 if (bmi < 25) return { classification: "Normal", className: "classification-normal", score: 5 };
                 if (bmi < 30) return { classification: "Overweight", className: "classification-warning", score: 2 };
@@ -757,7 +1063,813 @@
             }
         };
 
-        // ========== UI FUNCTIONS ==========
+        // ========== CONTROLLER: APPLICATION LOGIC ==========
+        const HealthController = {
+            currentSession: null,
+            historyChart: null,
+            
+            init() {
+                HealthModel.init();
+                this.setupEventListeners();
+                this.loadExampleData();
+                this.refreshHistory();
+            },
+            
+            setupEventListeners() {
+                // Tab navigation
+                document.querySelectorAll('.tab').forEach(tab => {
+                    tab.addEventListener('click', function() {
+                        showTab(this.getAttribute('data-tab'));
+                    });
+                });
+                
+                // Set up dynamic prescription inputs
+                document.getElementById('prescriptionDynamicInputs').innerHTML = `
+                    <div class="form-section">
+                        <div class="form-section-title">Prescription Parameters</div>
+                        <p><em>Based on data entered in previous tabs. Update those tabs first for accurate prescription.</em></p>
+                    </div>
+                `;
+            },
+            
+            loadExampleData() {
+                // Set example values
+                document.getElementById('heightCm').value = '175';
+                document.getElementById('weightKg').value = '70';
+                document.getElementById('ageYears').value = '30';
+                document.getElementById('waistCm').value = '80';
+                document.getElementById('hipCm').value = '95';
+                document.getElementById('diameterRadio').value = '5.2';
+                document.getElementById('diameterFemur').value = '9.5';
+                
+                document.getElementById('restingHR').value = '65';
+                document.getElementById('systolicBP').value = '120';
+                document.getElementById('diastolicBP').value = '80';
+                document.getElementById('bloodGlucose').value = '95';
+                document.getElementById('totalCholesterol').value = '180';
+                
+                document.getElementById('rmBench').value = '60';
+                document.getElementById('rmSquat').value = '80';
+            },
+            
+            updateUserData() {
+                const userData = {
+                    // Basic info
+                    height: parseFloat(document.getElementById('heightCm').value),
+                    weight: parseFloat(document.getElementById('weightKg').value),
+                    age: parseInt(document.getElementById('ageYears').value),
+                    sex: document.getElementById('sex').value,
+                    
+                    // Composition
+                    waist: parseFloat(document.getElementById('waistCm').value),
+                    hip: parseFloat(document.getElementById('hipCm').value),
+                    diameters: {
+                        wrist: parseFloat(document.getElementById('diameterRadio').value),
+                        knee: parseFloat(document.getElementById('diameterFemur').value)
+                    },
+                    skinfolds: {
+                        triceps: parseFloat(document.getElementById('sfTriceps').value) || 12,
+                        subscapular: parseFloat(document.getElementById('sfSubscapular').value) || 15,
+                        axillary: parseFloat(document.getElementById('sfAxillary').value) || 10,
+                        pectoral: parseFloat(document.getElementById('sfPectoral').value) || 8,
+                        abdominal: parseFloat(document.getElementById('sfAbdominal').value) || 20,
+                        suprailiac: parseFloat(document.getElementById('sfSuprailiac').value) || 18,
+                        thigh: parseFloat(document.getElementById('sfThigh').value) || 16
+                    },
+                    
+                    // Health metrics
+                    restingHR: parseFloat(document.getElementById('restingHR').value),
+                    systolicBP: parseFloat(document.getElementById('systolicBP').value),
+                    diastolicBP: parseFloat(document.getElementById('diastolicBP').value),
+                    bloodGlucose: parseFloat(document.getElementById('bloodGlucose').value),
+                    totalCholesterol: parseFloat(document.getElementById('totalCholesterol').value),
+                    activityLevel: document.getElementById('activityLevel').value,
+                    
+                    // Fitness
+                    rmBench: parseFloat(document.getElementById('rmBench').value),
+                    rmSquat: parseFloat(document.getElementById('rmSquat').value),
+                    goal: document.getElementById('goal').value
+                };
+                
+                // Calculate derived metrics
+                const bmi = FitnessCalculator.calculateBMI(userData.weight, userData.height);
+                const bmiClass = FitnessCalculator.classifyBMI(bmi);
+                const whr = FitnessCalculator.calculateWHR(userData.waist, userData.hip);
+                const whrClass = FitnessCalculator.classifyWHR(whr, userData.sex);
+                const density = FitnessCalculator.calculateBodyDensity(userData.skinfolds, userData.age, userData.sex);
+                const bodyFat = FitnessCalculator.calculateBodyFatPercentFromDensity(density);
+                const bmr = FitnessCalculator.calculateBMR(userData.weight, userData.height, userData.age, userData.sex);
+                const vo2max = FitnessCalculator.estimateVO2Max(userData.restingHR, userData.age, userData.sex);
+                const tdee = FitnessCalculator.calculateTDEE(bmr, userData.activityLevel);
+                
+                this.currentSession = {
+                    ...userData,
+                    bmi,
+                    bmiClass,
+                    whr,
+                    whrClass,
+                    bodyFat,
+                    bmr,
+                    vo2max,
+                    tdee
+                };
+                
+                return this.currentSession;
+            },
+            
+            async saveCurrentSession() {
+                if (!this.validateInputs()) {
+                    alert('Please fill all required fields (highlighted in red)');
+                    return;
+                }
+                
+                try {
+                    // 1. Get current data and save
+                    const userData = this.updateUserData();
+                    const savedSession = await HealthModel.saveSession(userData);
+                    
+                    console.log('✅ Session saved:', savedSession);
+                    
+                    // 2. Get updated sessions
+                    const updatedSessions = await HealthModel.getSessions();
+                    console.log('📊 Total sessions now:', updatedSessions.length);
+                    
+                    // 3. Destroy existing DataTable
+                    if ($.fn.DataTable.isDataTable('#historyTable')) {
+                        $('#historyTable').DataTable().destroy();
+                        console.log('🗑️ Destroyed old DataTable');
+                    }
+                    
+                    // 4. Update the table
+                    this.updateHistoryTable(updatedSessions);
+                    
+                    // 5. Update charts
+                    this.updateProgressChart(updatedSessions);
+                    this.updateComparison(updatedSessions);
+                    
+                    // 6. Show success
+                    this.showSaveSuccess(savedSession);
+                    
+                    return savedSession;
+                    
+                } catch (error) {
+                    console.error('❌ Error saving session:', error);
+                    alert('Error saving session. Please try again.');
+                }
+            },
+
+            showSaveSuccess(session) {
+                // Create success notification
+                const notification = document.createElement('div');
+                notification.innerHTML = `
+                    <div style="
+                        position: fixed;
+                        top: 20px;
+                        right: 20px;
+                        background: #4cd964;
+                        color: white;
+                        padding: 15px 20px;
+                        border-radius: 8px;
+                        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                        z-index: 10000;
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                        animation: slideIn 0.3s ease;
+                    ">
+                        <i class="fas fa-check-circle" style="font-size: 20px;"></i>
+                        <div>
+                            <strong>Session Saved!</strong><br>
+                            <small>Added to history on ${session.date || 'just now'}</small>
+                        </div>
+                    </div>
+                `;
+                
+                document.body.appendChild(notification);
+                
+                // Auto-remove after 3 seconds
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.style.animation = 'slideOut 0.3s ease';
+                        setTimeout(() => notification.remove(), 300);
+                    }
+                }, 3000);
+            },
+            
+            async loadLatestSession() {
+                try {
+                    const latestSession = await HealthModel.getLatestSession();
+                    if (!latestSession) {
+                        alert('No saved sessions found.');
+                        return;
+                    }
+                    
+                    this.populateFormWithSession(latestSession);
+                    alert(`Loaded session from ${latestSession.date}`);
+                } catch (error) {
+                    console.error('Error loading session:', error);
+                    alert('Error loading session. Please try again.');
+                }
+            },
+            
+            populateFormWithSession(session) {
+                // Basic info
+                if (session.height) document.getElementById('heightCm').value = session.height;
+                if (session.weight) document.getElementById('weightKg').value = session.weight;
+                if (session.age) document.getElementById('ageYears').value = session.age;
+                if (session.sex) document.getElementById('sex').value = session.sex;
+                
+                // Circumferences
+                if (session.waist) document.getElementById('waistCm').value = session.waist;
+                if (session.hip) document.getElementById('hipCm').value = session.hip;
+                
+                // Diameters
+                if (session.diameters) {
+                    if (session.diameters.wrist) document.getElementById('diameterRadio').value = session.diameters.wrist;
+                    if (session.diameters.knee) document.getElementById('diameterFemur').value = session.diameters.knee;
+                }
+                
+                // Skinfolds
+                if (session.skinfolds) {
+                    if (session.skinfolds.triceps) document.getElementById('sfTriceps').value = session.skinfolds.triceps;
+                    if (session.skinfolds.subscapular) document.getElementById('sfSubscapular').value = session.skinfolds.subscapular;
+                    if (session.skinfolds.axillary) document.getElementById('sfAxillary').value = session.skinfolds.axillary;
+                    if (session.skinfolds.pectoral) document.getElementById('sfPectoral').value = session.skinfolds.pectoral;
+                    if (session.skinfolds.abdominal) document.getElementById('sfAbdominal').value = session.skinfolds.abdominal;
+                    if (session.skinfolds.suprailiac) document.getElementById('sfSuprailiac').value = session.skinfolds.suprailiac;
+                    if (session.skinfolds.thigh) document.getElementById('sfThigh').value = session.skinfolds.thigh;
+                }
+                
+                // Health metrics
+                if (session.restingHR) document.getElementById('restingHR').value = session.restingHR;
+                if (session.systolicBP) document.getElementById('systolicBP').value = session.systolicBP;
+                if (session.diastolicBP) document.getElementById('diastolicBP').value = session.diastolicBP;
+                if (session.bloodGlucose) document.getElementById('bloodGlucose').value = session.bloodGlucose;
+                if (session.totalCholesterol) document.getElementById('totalCholesterol').value = session.totalCholesterol;
+                if (session.activityLevel) document.getElementById('activityLevel').value = session.activityLevel;
+                
+                // Fitness
+                if (session.rmBench) document.getElementById('rmBench').value = session.rmBench;
+                if (session.rmSquat) document.getElementById('rmSquat').value = session.rmSquat;
+                if (session.goal) document.getElementById('goal').value = session.goal;
+            },
+            
+            async refreshHistory() {
+                try {
+                    const sessions = await HealthModel.getSessions();
+                    console.log('Retrieved sessions:', sessions); // DEBUG
+                    this.updateHistoryTable(sessions);
+                    this.updateProgressChart(sessions);
+                    this.updateComparison(sessions);
+                } catch (error) {
+                    console.error('Error refreshing history:', error);
+                    this.updateHistoryTable([]);
+                }
+            },
+            
+            async filterHistory() {
+                const filter = document.getElementById('historyFilter').value;
+                const sessions = await HealthModel.getFilteredSessions(filter);
+                this.updateHistoryTable(sessions);
+            },
+            
+            updateHistoryTable(sessions) {
+                console.log('=== updateHistoryTable called ===');
+                console.log('Sessions count:', sessions ? sessions.length : 0);
+                
+                const tableBody = document.getElementById('historyTableBody');
+                const table = document.getElementById('historyTable');
+                
+                tableBody.innerHTML = '';
+                
+                if (!sessions || sessions.length === 0) {
+                    console.log('No sessions, showing empty table');
+                    
+                    tableBody.innerHTML = `
+                        <tr>
+                            <td>-</td><td>-</td><td>-</td><td>-</td>
+                            <td>-</td><td>-</td><td>-</td><td>-</td>
+                        </tr>
+                        <tr id="emptyMessageRow" style="display: none;">
+                            <td colspan="8" style="text-align: center; padding: 40px; color: #666; background: #f9f9f9;">
+                                <div style="max-width: 400px; margin: 0 auto;">
+                                    <i class="fas fa-clipboard-list" style="font-size: 64px; margin-bottom: 15px; opacity: 0.3; display: block;"></i>
+                                    <h3 style="margin: 10px 0; color: #555;">No Assessment History</h3>
+                                    <p style="margin: 5px 0; font-size: 14px;">Complete your first health assessment to see your progress here.</p>
+                                    <p style="margin: 15px 0 0 0; font-size: 13px; color: #888;">
+                                        <i class="fas fa-lightbulb"></i> 
+                                        Go to <strong>Body Composition</strong> tab, fill your data and click "Save Session"
+                                    </p>
+                                </div>
+                            </td>
+                        </tr>
+                    `;
+                    
+                    try {
+                        if ($.fn.DataTable.isDataTable('#historyTable')) {
+                            $('#historyTable').DataTable().destroy();
+                            console.log('Destroyed existing DataTable');
+                        }
+                    } catch (e) {
+                        console.log('No DataTable to destroy');
+                    }
+                    
+                    table.classList.remove('display');
+                    table.style.width = '100%';
+                    
+                    setTimeout(() => {
+                        const firstRow = tableBody.querySelector('tr:first-child');
+                        const messageRow = document.getElementById('emptyMessageRow');
+                        if (firstRow && messageRow) {
+                            firstRow.style.display = 'none';
+                            messageRow.style.display = '';
+                        }
+                    }, 50);
+                    
+                    return;
+                }
+                
+                console.log('Building table with', sessions.length, 'sessions');
+                
+                sessions.forEach((session, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${session.date || 'N/A'}</td>
+                        <td>${session.weight ? session.weight.toFixed(1) : '-'}</td>
+                        <td>${session.bmi ? session.bmi.toFixed(1) : '-'}</td>
+                        <td>${session.bodyFat ? session.bodyFat.toFixed(1) : '-'}</td>
+                        <td>${session.whr ? session.whr.toFixed(2) : '-'}</td>
+                        <td>${session.restingHR || '-'}</td>
+                        <td>${session.vo2max ? session.vo2max.toFixed(1) : '-'}</td>
+                        <td style="white-space: nowrap; min-width: 120px;">
+                            <button class="btn btn-primary btn-icon btn-small" onclick="HealthController.loadSession(${session.id})" title="Load">
+                                <i class="fas fa-upload"></i>
+                            </button>
+                            <button class="btn btn-warning btn-icon btn-small" onclick="HealthController.exportSession(${session.id})" title="Export">
+                                <i class="fas fa-download"></i>
+                            </button>
+                            <button class="btn btn-danger btn-icon btn-small" onclick="HealthController.deleteSession(${session.id})" title="Delete">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+                
+                try {
+                    if ($.fn.DataTable.isDataTable('#historyTable')) {
+                        $('#historyTable').DataTable().destroy();
+                        console.log('Destroyed old DataTable');
+                    }
+                } catch (e) {
+                    console.log('No old DataTable to destroy:', e.message);
+                }
+                
+                try {
+                    console.log('Initializing new DataTable...');
+                    
+                    table.classList.add('display');
+                    
+                    const dataTable = $('#historyTable').DataTable({
+                        searching: true,
+                        ordering: true,
+                        info: true,
+                        paging: sessions.length > 10,
+                        pageLength: 10,
+                        order: [[0, 'desc']],
+                        responsive: false,
+                        autoWidth: false,
+                        destroy: true,
+                        columnDefs: [
+                            { width: '150px', targets: 0 }, // Date
+                            { width: '100px', targets: 1 }, // Weight
+                            { width: '80px', targets: 2 },  // BMI
+                            { width: '100px', targets: 3 }, // Body Fat
+                            { width: '80px', targets: 4 },  // WHR
+                            { width: '100px', targets: 5 }, // Rest HR
+                            { width: '100px', targets: 6 }, // VO₂ Max
+                            { width: '120px', targets: 7 }  // Actions
+                        ],
+                        language: {
+                            emptyTable: "No sessions available",
+                            zeroRecords: "No matching sessions found"
+                        }
+                    });
+                    
+                    console.log('✅ DataTable initialized successfully with', sessions.length, 'rows');
+                    
+                } catch (error) {
+                    console.error('❌ Error initializing DataTable:', error);
+                    table.classList.remove('display');
+                }
+            },
+            
+            updateProgressChart(sessions) {
+                const metric = document.getElementById('chartMetric').value;
+                const ctx = document.getElementById('progressChart').getContext('2d');
+                
+                // Sort sessions by date
+                const sortedSessions = [...sessions].sort((a, b) => 
+                    new Date(a.timestamp) - new Date(b.timestamp)
+                );
+                
+                const labels = sortedSessions.map(s => {
+                    const date = new Date(s.timestamp);
+                    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                });
+                
+                let data = [];
+                let label = '';
+                let unit = '';
+                
+                switch(metric) {
+                    case 'weight':
+                        data = sortedSessions.map(s => s.weight);
+                        label = 'Weight';
+                        unit = 'kg';
+                        break;
+                    case 'bmi':
+                        data = sortedSessions.map(s => s.bmi);
+                        label = 'BMI';
+                        unit = '';
+                        break;
+                    case 'bodyfat':
+                        data = sortedSessions.map(s => s.bodyFat);
+                        label = 'Body Fat';
+                        unit = '%';
+                        break;
+                    case 'whr':
+                        data = sortedSessions.map(s => s.whr);
+                        label = 'Waist-Hip Ratio';
+                        unit = '';
+                        break;
+                    case 'restingHR':
+                        data = sortedSessions.map(s => s.restingHR);
+                        label = 'Resting Heart Rate';
+                        unit = 'bpm';
+                        break;
+                    case 'vo2max':
+                        data = sortedSessions.map(s => s.vo2max);
+                        label = 'VO₂ Max';
+                        unit = 'ml/kg/min';
+                        break;
+                }
+                
+                // Destroy existing chart
+                if (this.historyChart) {
+                    this.historyChart.destroy();
+                }
+                
+                // Create new chart
+                this.historyChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: `${label} (${unit})`,
+                            data: data,
+                            borderColor: '#007aff',
+                            backgroundColor: 'rgba(0, 122, 255, 0.1)',
+                            borderWidth: 2,
+                            fill: true,
+                            tension: 0.4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: true,
+                                position: 'top'
+                            },
+                            tooltip: {
+                                mode: 'index',
+                                intersect: false
+                            }
+                        },
+                        scales: {
+                            x: {
+                                grid: {
+                                    display: true
+                                }
+                            },
+                            y: {
+                                beginAtZero: false,
+                                grid: {
+                                    display: true
+                                }
+                            }
+                        }
+                    }
+                });
+            },
+            
+            updateComparison(sessions) {
+                if (sessions.length < 2) {
+                    document.getElementById('comparisonWeight').textContent = '-';
+                    document.getElementById('comparisonWeightChange').textContent = 'Need at least 2 sessions';
+                    document.getElementById('comparisonBodyfat').textContent = '-';
+                    document.getElementById('comparisonBodyfatChange').textContent = 'Need at least 2 sessions';
+                    document.getElementById('comparisonBMI').textContent = '-';
+                    document.getElementById('comparisonBMIChange').textContent = 'Need at least 2 sessions';
+                    document.getElementById('comparisonWHR').textContent = '-';
+                    document.getElementById('comparisonWHRChange').textContent = 'Need at least 2 sessions';
+                    return;
+                }
+                
+                const latest = sessions[0];
+                const previous = sessions[1];
+                
+                // Weight comparison
+                if (latest.weight && previous.weight) {
+                    const change = latest.weight - previous.weight;
+                    const changePercent = ((change / previous.weight) * 100).toFixed(1);
+                    document.getElementById('comparisonWeight').textContent = `${latest.weight.toFixed(1)} kg`;
+                    document.getElementById('comparisonWeightChange').innerHTML = `
+                        ${change > 0 ? '+' : ''}${change.toFixed(1)} kg 
+                        <span class="${change > 0 ? 'positive-change' : change < 0 ? 'negative-change' : 'no-change'}">
+                            (${change > 0 ? '+' : ''}${changePercent}%)
+                        </span>
+                    `;
+                }
+                
+                // Body fat comparison
+                if (latest.bodyFat && previous.bodyFat) {
+                    const change = latest.bodyFat - previous.bodyFat;
+                    const changePercent = ((change / previous.bodyFat) * 100).toFixed(1);
+                    document.getElementById('comparisonBodyfat').textContent = `${latest.bodyFat.toFixed(1)}%`;
+                    document.getElementById('comparisonBodyfatChange').innerHTML = `
+                        ${change > 0 ? '+' : ''}${change.toFixed(1)}% 
+                        <span class="${change > 0 ? 'negative-change' : change < 0 ? 'positive-change' : 'no-change'}">
+                            (${change > 0 ? '+' : ''}${changePercent}%)
+                        </span>
+                    `;
+                }
+                
+                // BMI comparison
+                if (latest.bmi && previous.bmi) {
+                    const change = latest.bmi - previous.bmi;
+                    document.getElementById('comparisonBMI').textContent = latest.bmi.toFixed(1);
+                    document.getElementById('comparisonBMIChange').innerHTML = `
+                        ${change > 0 ? '+' : ''}${change.toFixed(1)}
+                        <span class="${change > 0 ? 'negative-change' : change < 0 ? 'positive-change' : 'no-change'}">
+                            ${change > 0 ? 'Increase' : change < 0 ? 'Decrease' : 'No change'}
+                        </span>
+                    `;
+                }
+                
+                // WHR comparison
+                if (latest.whr && previous.whr) {
+                    const change = latest.whr - previous.whr;
+                    document.getElementById('comparisonWHR').textContent = latest.whr.toFixed(2);
+                    document.getElementById('comparisonWHRChange').innerHTML = `
+                        ${change > 0 ? '+' : ''}${change.toFixed(2)}
+                        <span class="${change > 0 ? 'negative-change' : change < 0 ? 'positive-change' : 'no-change'}">
+                            ${change > 0 ? 'Increase' : change < 0 ? 'Decrease' : 'No change'}
+                        </span>
+                    `;
+                }
+            },
+            
+            async loadSession(id) {
+                try {
+                    const session = await HealthModel.getSession(id);
+                    if (session) {
+                        this.populateFormWithSession(session);
+                        alert(`Loaded session from ${session.date}`);
+                        showTab('composition');
+                    }
+                } catch (error) {
+                    console.error('Error loading session:', error);
+                    alert('Error loading session. Please try again.');
+                }
+            },
+            
+            async deleteSession(id) {
+                if (!confirm('Are you sure you want to delete this session? This action cannot be undone.')) {
+                    return;
+                }
+                
+                try {
+                    console.log('🔄 DELETE PROCESS START - ID:', id);
+                    
+                    // 1. Delete from database
+                    await HealthModel.deleteSession(id);
+                    console.log('✅ Deleted from database');
+                    
+                    // 2. Get UPDATED sessions
+                    const updatedSessions = await HealthModel.getSessions();
+                    console.log('📊 Updated sessions count:', updatedSessions.length);
+                    
+                    // 3. DESTROY existing DataTable
+                    if ($.fn.DataTable.isDataTable('#historyTable')) {
+                        console.log('🗑️ Destroying existing DataTable...');
+                        $('#historyTable').DataTable().destroy();
+                    }
+                    
+                    // 4. Completely rebuild the table
+                    console.log('🔨 Rebuilding table...');
+                    this.updateHistoryTable(updatedSessions);
+                    
+                    // 5. Update charts and comparison
+                    this.updateProgressChart(updatedSessions);
+                    this.updateComparison(updatedSessions);
+                    
+                    console.log('✅ DELETE PROCESS COMPLETE');
+                    
+                    // Show success message
+                    this.showNotification('Session deleted successfully!', 'success');
+
+                } catch (error) {
+                    console.error('Error deleting session:', error);
+                    this.showNotification('Error deleting session. Please try again.', 'error');
+                }
+            },
+
+            showNotification(message, type = 'info') {
+                const oldNotification = document.querySelector('.data-notification');
+                if (oldNotification) {
+                    oldNotification.remove();
+                }
+                
+                const notification = document.createElement('div');
+                notification.className = `data-notification ${type}`;
+                notification.innerHTML = `
+                    <div style="
+                        position: fixed;
+                        top: 20px;
+                        right: 20px;
+                        padding: 12px 20px;
+                        background: ${type === 'success' ? '#4cd964' : type === 'error' ? '#ff3b30' : '#007aff'};
+                        color: white;
+                        border-radius: 8px;
+                        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                        z-index: 10000;
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                        animation: slideIn 0.3s ease;
+                    ">
+                        <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
+                        <span>${message}</span>
+                    </div>
+                `;
+                
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.style.animation = 'slideOut 0.3s ease';
+                        setTimeout(() => notification.remove(), 300);
+                    }
+                }, 3000);
+                
+                if (!document.querySelector('#notification-styles')) {
+                    const style = document.createElement('style');
+                    style.id = 'notification-styles';
+                    style.textContent = `
+                        @keyframes slideIn {
+                            from { transform: translateX(100%); opacity: 0; }
+                            to { transform: translateX(0); opacity: 1; }
+                        }
+                        @keyframes slideOut {
+                            from { transform: translateX(0); opacity: 1; }
+                            to { transform: translateX(100%); opacity: 0; }
+                        }
+                    `;
+                    document.head.appendChild(style);
+                }
+            },
+
+            async clearAllHistory() {
+                if (confirm('Are you sure you want to delete ALL saved sessions? This action cannot be undone.')) {
+                    try {
+                        await HealthModel.clearAllSessions();
+                        this.refreshHistory();
+                        alert('All sessions deleted successfully.');
+                    } catch (error) {
+                        console.error('Error clearing history:', error);
+                        alert('Error clearing history. Please try again.');
+                    }
+                }
+            },
+            
+            async exportHistoryToCSV() {
+                try {
+                    const sessions = await HealthModel.getSessions();
+                    if (sessions.length === 0) {
+                        alert('No sessions to export.');
+                        return;
+                    }
+                    
+                    // Create CSV header
+                    const headers = ['Date', 'Weight (kg)', 'BMI', 'Body Fat %', 'WHR', 'Resting HR', 'VO₂ Max', 'BMR', 'TDEE'];
+                    
+                    // Create CSV rows
+                    const rows = sessions.map(session => [
+                        session.date,
+                        session.weight ? session.weight.toFixed(1) : '',
+                        session.bmi ? session.bmi.toFixed(1) : '',
+                        session.bodyFat ? session.bodyFat.toFixed(1) : '',
+                        session.whr ? session.whr.toFixed(2) : '',
+                        session.restingHR || '',
+                        session.vo2max ? session.vo2max.toFixed(1) : '',
+                        session.bmr || '',
+                        session.tdee || ''
+                    ]);
+                    
+                    // Combine header and rows
+                    const csvContent = [
+                        headers.join(','),
+                        ...rows.map(row => row.join(','))
+                    ].join('\n');
+                    
+                    // Create download link
+                    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+                    const url = URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.setAttribute('href', url);
+                    link.setAttribute('download', `health-fitness-history-${new Date().toISOString().split('T')[0]}.csv`);
+                    link.style.visibility = 'hidden';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    
+                    alert(`Exported ${sessions.length} sessions to CSV.`);
+                } catch (error) {
+                    console.error('Error exporting to CSV:', error);
+                    alert('Error exporting data. Please try again.');
+                }
+            },
+            
+            async exportHistoryToJSON() {
+                try {
+                    const sessions = await HealthModel.getSessions();
+                    if (sessions.length === 0) {
+                        alert('No sessions to export.');
+                        return;
+                    }
+                    
+                    const jsonContent = JSON.stringify(sessions, null, 2);
+                    const blob = new Blob([jsonContent], { type: 'application/json;charset=utf-8;' });
+                    const url = URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.setAttribute('href', url);
+                    link.setAttribute('download', `health-fitness-history-${new Date().toISOString().split('T')[0]}.json`);
+                    link.style.visibility = 'hidden';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    
+                    alert(`Exported ${sessions.length} sessions to JSON.`);
+                } catch (error) {
+                    console.error('Error exporting to JSON:', error);
+                    alert('Error exporting data. Please try again.');
+                }
+            },
+            
+            async exportSession(id) {
+                try {
+                    const session = await HealthModel.getSession(id);
+                    if (!session) {
+                        alert('Session not found.');
+                        return;
+                    }
+                    
+                    const jsonContent = JSON.stringify(session, null, 2);
+                    const blob = new Blob([jsonContent], { type: 'application/json;charset=utf-8;' });
+                    const url = URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.setAttribute('href', url);
+                    link.setAttribute('download', `health-session-${new Date(session.timestamp).toISOString().split('T')[0]}.json`);
+                    link.style.visibility = 'hidden';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    
+                    alert('Session exported successfully.');
+                } catch (error) {
+                    console.error('Error exporting session:', error);
+                    alert('Error exporting session. Please try again.');
+                }
+            },
+            
+            validateInputs() {
+                let isValid = true;
+                document.querySelectorAll('[data-validate="true"]').forEach(input => {
+                    if (!input.value || isNaN(input.value)) {
+                        input.classList.add('validation-error');
+                        isValid = false;
+                    } else {
+                        input.classList.remove('validation-error');
+                    }
+                });
+                return isValid;
+            }
+        };
+
+        // ========== VIEW: UI FUNCTIONS ==========
         function toggleAccordion(header) {
             const accordion = header.parentElement;
             const content = header.nextElementSibling;
@@ -774,65 +1886,15 @@
             if (tabBtn) tabBtn.classList.add('active');
         }
 
-        function validateInputs() {
-            let isValid = true;
-            document.querySelectorAll('[data-validate="true"]').forEach(input => {
-                if (!input.value || isNaN(input.value)) {
-                    input.classList.add('validation-error');
-                    isValid = false;
-                } else {
-                    input.classList.remove('validation-error');
-                }
-            });
-            return isValid;
-        }
-
-        // Tab 1: Body Composition
-        function updateUserData() {
-            // Basic data
-            userData.height = parseFloat(document.getElementById('heightCm').value);
-            userData.weight = parseFloat(document.getElementById('weightKg').value);
-            userData.age = parseInt(document.getElementById('ageYears').value);
-            userData.sex = document.getElementById('sex').value;
-            
-            // Circumferences
-            userData.waist = parseFloat(document.getElementById('waistCm').value);
-            userData.hip = parseFloat(document.getElementById('hipCm').value);
-            
-            // Diameters
-            userData.diameters.wrist = parseFloat(document.getElementById('diameterRadio').value);
-            userData.diameters.knee = parseFloat(document.getElementById('diameterFemur').value);
-            
-            // Skinfolds
-            userData.skinfolds.triceps = parseFloat(document.getElementById('sfTriceps').value) || 12;
-            userData.skinfolds.subscapular = parseFloat(document.getElementById('sfSubscapular').value) || 15;
-            userData.skinfolds.axillary = parseFloat(document.getElementById('sfAxillary').value) || 10;
-            userData.skinfolds.pectoral = parseFloat(document.getElementById('sfPectoral').value) || 8;
-            userData.skinfolds.abdominal = parseFloat(document.getElementById('sfAbdominal').value) || 20;
-            userData.skinfolds.suprailiac = parseFloat(document.getElementById('sfSuprailiac').value) || 18;
-            userData.skinfolds.thigh = parseFloat(document.getElementById('sfThigh').value) || 16;
-            
-            // Health metrics
-            userData.restingHR = parseFloat(document.getElementById('restingHR').value);
-            userData.systolicBP = parseFloat(document.getElementById('systolicBP').value);
-            userData.diastolicBP = parseFloat(document.getElementById('diastolicBP').value);
-            userData.bloodGlucose = parseFloat(document.getElementById('bloodGlucose').value);
-            userData.totalCholesterol = parseFloat(document.getElementById('totalCholesterol').value);
-            userData.activityLevel = document.getElementById('activityLevel').value;
-            
-            // Fitness
-            userData.rmBench = parseFloat(document.getElementById('rmBench').value);
-            userData.rmSquat = parseFloat(document.getElementById('rmSquat').value);
-            userData.goal = document.getElementById('goal').value;
-        }
-
+        // ========== COMPATIBILITY WITH ORIGINAL FUNCTIONS ==========
+        // Keep original functions for compatibility
         function calculateComposition() {
-            if (!validateInputs()) {
-                alert('Please fill all required fields (highlighted in red)');
-                return;
-            }
+            HealthController.updateUserData();
             
-            updateUserData();
+            // Use existing calculation logic
+            const userData = HealthController.currentSession;
+            
+            if (!userData) return;
             
             // Calculate all metrics
             const bmi = FitnessCalculator.calculateBMI(userData.weight, userData.height);
@@ -880,14 +1942,11 @@
             document.getElementById('resultsComposition').style.display = 'block';
         }
 
-        // Tab 2: Health Metrics
         function calculateHealthMetrics() {
-            if (!validateInputs()) {
-                alert('Please fill all required health metrics');
-                return;
-            }
+            HealthController.updateUserData();
             
-            updateUserData();
+            const userData = HealthController.currentSession;
+            if (!userData) return;
             
             const bmr = FitnessCalculator.calculateBMR(userData.weight, userData.height, userData.age, userData.sex);
             const vo2max = FitnessCalculator.estimateVO2Max(userData.restingHR, userData.age, userData.sex);
@@ -934,9 +1993,11 @@
             document.getElementById('resultsHealth').style.display = 'block';
         }
 
-        // Tab 3: Fitness Assessment
         function calculateFitnessAssessment() {
-            updateUserData();
+            HealthController.updateUserData();
+            
+            const userData = HealthController.currentSession;
+            if (!userData) return;
             
             const maxHR = FitnessCalculator.calculateMaxHR(userData.age);
             const zones = FitnessCalculator.getTrainingZones(userData.restingHR, userData.age);
@@ -992,9 +2053,11 @@
             document.getElementById('resultsFitness').style.display = 'block';
         }
 
-        // Tab 4: Exercise Prescription
         function generatePrescription() {
-            updateUserData();
+            HealthController.updateUserData();
+            
+            const userData = HealthController.currentSession;
+            if (!userData) return;
             
             // Calculate metrics for prescription
             const bmr = FitnessCalculator.calculateBMR(userData.weight, userData.height, userData.age, userData.sex);
@@ -1082,9 +2145,11 @@
             document.getElementById('resultsPrescription').style.display = 'block';
         }
 
-        // Tab 5: Comprehensive Summary
         function generateComprehensiveSummary() {
-            updateUserData();
+            HealthController.updateUserData();
+            
+            const userData = HealthController.currentSession;
+            if (!userData) return;
             
             // Calculate all metrics
             const bmi = FitnessCalculator.calculateBMI(userData.weight, userData.height);
@@ -1161,40 +2226,42 @@
                 '<p class="classification-normal">No significant risk factors identified</p>';
         }
 
+        // ========== ALIAS FUNCTIONS FOR COMPATIBILITY ==========
+        function saveCurrentSession() {
+            return HealthController.saveCurrentSession();
+        }
+
+        function loadLatestSession() {
+            return HealthController.loadLatestSession();
+        }
+
+        function refreshHistory() {
+            return HealthController.refreshHistory();
+        }
+
+        function filterHistory() {
+            return HealthController.filterHistory();
+        }
+
+        function updateProgressChart() {
+            return HealthController.refreshHistory();
+        }
+
+        function exportHistoryToCSV() {
+            return HealthController.exportHistoryToCSV();
+        }
+
+        function exportHistoryToJSON() {
+            return HealthController.exportHistoryToJSON();
+        }
+
+        function clearAllHistory() {
+            return HealthController.clearAllHistory();
+        }
+
         // ========== INITIALIZATION ==========
         document.addEventListener('DOMContentLoaded', function() {
-            // Tab navigation
-            document.querySelectorAll('.tab').forEach(tab => {
-                tab.addEventListener('click', function() {
-                    showTab(this.getAttribute('data-tab'));
-                });
-            });
-            
-            // Set up dynamic prescription inputs
-            document.getElementById('prescriptionDynamicInputs').innerHTML = `
-                <div class="form-section">
-                    <div class="form-section-title">Prescription Parameters</div>
-                    <p><em>Based on data entered in previous tabs. Update those tabs first for accurate prescription.</em></p>
-                </div>
-            `;
-            
-            // Set example values
-            document.getElementById('heightCm').value = '175';
-            document.getElementById('weightKg').value = '70';
-            document.getElementById('ageYears').value = '30';
-            document.getElementById('waistCm').value = '80';
-            document.getElementById('hipCm').value = '95';
-            document.getElementById('diameterRadio').value = '5.2';
-            document.getElementById('diameterFemur').value = '9.5';
-            
-            document.getElementById('restingHR').value = '65';
-            document.getElementById('systolicBP').value = '120';
-            document.getElementById('diastolicBP').value = '80';
-            document.getElementById('bloodGlucose').value = '95';
-            document.getElementById('totalCholesterol').value = '180';
-            
-            document.getElementById('rmBench').value = '60';
-            document.getElementById('rmSquat').value = '80';
+            HealthController.init();
         });
     </script>
 </body>
