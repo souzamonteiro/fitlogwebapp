@@ -8,8 +8,8 @@ const url = require('url');
 const config = {
     //port: 3000,
     //sslPort: 3443,
-    port: 4000,
-    sslPort: 4443,
+    port: 8000,
+    sslPort: 8443,
     folder: 'www',
     //folder: '.',
     //enableSSL: false,

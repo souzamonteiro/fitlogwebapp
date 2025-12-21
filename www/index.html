@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1a2a6c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
     <title>Comprehensive Health & Fitness Assessment with History</title>
+    <link rel="icon" href="icons/favicon.ico" type="image/x-icon">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-152x152.png">
     
     <!-- CSS Libraries -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" 
-        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" 
-        crossorigin="anonymous" 
-        referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/dataTables.min.css">
+    <link rel="stylesheet" href="css/fontawesome.min.css">
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -139,9 +143,9 @@
             <div class="tab active" data-tab="composition">Body Composition</div>
             <div class="tab" data-tab="health">Health Metrics</div>
             <div class="tab" data-tab="fitness">Fitness Assessment</div>
+            <div class="tab" data-tab="summary">Comprehensive Summary</div>
             <div class="tab" data-tab="prescription">Exercise Prescription</div>
             <div class="tab" data-tab="history">History & Progress</div>
-            <div class="tab" data-tab="summary">Comprehensive Summary</div>
         </div>
 
         <!-- Tab 1: Body Composition -->
@@ -465,7 +469,44 @@
             </div>
         </div>
 
-        <!-- Tab 4: Exercise Prescription -->
+        <!-- Tab 4: Comprehensive Summary -->
+        <div id="tab-summary" class="tab-content">
+            <div class="card">
+                <div class="card-header">Comprehensive Health Summary</div>
+                <div class="card-content">
+                    <div class="summary-panel" id="summaryPanel">
+                        <div class="summary-score" id="overallScore">-</div>
+                        <div class="summary-text" id="overallAssessment">Complete assessment to see results</div>
+                    </div>
+
+                    <div class="assessment-grid">
+                        <div class="assessment-card">
+                            <div class="form-section-title">📊 Body Composition</div>
+                            <div id="summaryComposition"></div>
+                        </div>
+                        <div class="assessment-card">
+                            <div class="form-section-title">🩺 Health Metrics</div>
+                            <div id="summaryHealth"></div>
+                        </div>
+                    </div>
+
+                    <div class="assessment-grid">
+                        <div class="assessment-card">
+                            <div class="form-section-title">🎯 Fitness Assessment</div>
+                            <div id="summaryFitness"></div>
+                        </div>
+                        <div class="assessment-card">
+                            <div class="form-section-title">⚠️ Risk Factors</div>
+                            <div id="summaryRisks"></div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary" onclick="generateComprehensiveSummary()">Generate Complete Assessment</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 5: Exercise Prescription -->
         <div id="tab-prescription" class="tab-content">
             <div class="card">
                 <div class="card-header">Personalized Exercise Prescription</div>
@@ -514,7 +555,7 @@
             </div>
         </div>
 
-        <!-- NEW Tab 5: History & Progress -->
+        <!-- NEW Tab 6: History & Progress -->
         <div id="tab-history" class="tab-content">
             <div class="card">
                 <div class="card-header">
@@ -627,49 +668,12 @@
                 </div>
             </div>
         </div>
-
-        <!-- Tab 6: Comprehensive Summary -->
-        <div id="tab-summary" class="tab-content">
-            <div class="card">
-                <div class="card-header">Comprehensive Health Summary</div>
-                <div class="card-content">
-                    <div class="summary-panel" id="summaryPanel">
-                        <div class="summary-score" id="overallScore">-</div>
-                        <div class="summary-text" id="overallAssessment">Complete assessment to see results</div>
-                    </div>
-
-                    <div class="assessment-grid">
-                        <div class="assessment-card">
-                            <div class="form-section-title">📊 Body Composition</div>
-                            <div id="summaryComposition"></div>
-                        </div>
-                        <div class="assessment-card">
-                            <div class="form-section-title">🩺 Health Metrics</div>
-                            <div id="summaryHealth"></div>
-                        </div>
-                    </div>
-
-                    <div class="assessment-grid">
-                        <div class="assessment-card">
-                            <div class="form-section-title">🎯 Fitness Assessment</div>
-                            <div id="summaryFitness"></div>
-                        </div>
-                        <div class="assessment-card">
-                            <div class="form-section-title">⚠️ Risk Factors</div>
-                            <div id="summaryRisks"></div>
-                        </div>
-                    </div>
-
-                    <button class="btn btn-primary" onclick="generateComprehensiveSummary()">Generate Complete Assessment</button>
-                </div>
-            </div>
-        </div>
     </div>
 
     <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/jquery-3.7.0.min.js"></script>
+    <script src="js/dataTables.min.js"></script>
+    <script src="js/chart.js"></script>
     <script src="js/zangodb.min.js"></script>
     
     <script>
@@ -1312,6 +1316,12 @@
                 if (session.rmBench) document.getElementById('rmBench').value = session.rmBench;
                 if (session.rmSquat) document.getElementById('rmSquat').value = session.rmSquat;
                 if (session.goal) document.getElementById('goal').value = session.goal;
+
+                calculateComposition();
+                calculateHealthMetrics();
+                calculateFitnessAssessment();
+                generateComprehensiveSummary();
+                generatePrescription();
             },
             
             async refreshHistory() {
@@ -2263,6 +2273,14 @@
         document.addEventListener('DOMContentLoaded', function() {
             HealthController.init();
         });
+    </script>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./sw.js')
+            .then(() => console.log('Service Worker successfully registered.'))
+            .catch(err => console.error('Erro SW:', err));
+        }
     </script>
 </body>
 </html>

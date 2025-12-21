@@ -1,0 +1,36 @@
+.
+├── css
+│   ├── dataTables.min.css
+│   └── fontawesome.min.css
+├── favicon.ico
+├── icons
+│   ├── apple-touch-icon.png
+│   ├── favicon-16.png
+│   ├── favicon-32.png
+│   ├── favicon.ico
+│   ├── icon-128x128.png
+│   ├── icon-144x144.png
+│   ├── icon-152x152.png
+│   ├── icon-16x16.png
+│   ├── icon-180x180.png
+│   ├── icon-192x192.png
+│   ├── icon-32x32.png
+│   ├── icon-384x384.png
+│   ├── icon-512x512.png
+│   ├── icon-72x72.png
+│   ├── icon-96x96.png
+│   └── icon.svg
+├── index.html
+├── js
+│   ├── chart.js
+│   ├── dataTables.min.js
+│   ├── jquery-3.7.0.min.js
+│   └── zangodb.min.js
+├── manifest.json
+├── sw.js
+├── tree.txt
+└── webfonts
+    ├── fa-solid-900.ttf
+    └── fa-solid-900.woff2
+
+5 directories, 29 files
