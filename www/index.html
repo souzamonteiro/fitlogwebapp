@@ -124,11 +124,24 @@
             padding: 8px;
         }
 
-        /* Responsive adjustments */
+        /* Mobile responsive tables */
         @media (max-width: 768px) {
             .form-row { flex-direction: column; }
             .history-controls { flex-direction: column; }
             .btn { width: 100%; margin-bottom: 5px; }
+                .btn-icon {
+                padding: 6px;
+                min-width: 32px;
+            }
+            .dataTables_wrapper .dataTables_paginate .paginate_button {
+                padding: 5px 8px;
+                margin: 0 2px;
+            }
+            
+            #historyTable th, #historyTable td {
+                padding: 8px 5px;
+                font-size: 14px;
+            }
         }
     </style>
 </head>
