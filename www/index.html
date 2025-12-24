@@ -123,6 +123,57 @@
             border: 1px solid #dee2e6;
             padding: 8px;
         }
+
+        /* Mobile responsive tables */
+        @media (max-width: 768px) {
+            .form-row { flex-direction: column; }
+            .history-controls { flex-direction: column; }
+            .btn { width: 100%; margin-bottom: 5px; }
+            .btn-icon {
+                padding: 6px;
+                min-width: 32px;
+            }
+            .dataTables_wrapper .dataTables_scroll {
+                overflow-x: auto;
+            }
+            .dataTables_wrapper .dataTables_paginate .paginate_button {
+                padding: 5px 8px;
+                margin: 0 2px;
+            }
+            .history-table-container {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            .session-actions .btn-icon {
+                padding: 6px 8px;
+                min-width: 36px;
+                font-size: 12px;
+            }
+            #historyTable {
+                table-layout: auto !important;
+            }
+            #historyTable th:nth-child(8),
+            #historyTable td:nth-child(8) {
+                min-width: 120px;
+                max-width: 120px;
+                width: 120px;
+            }
+            #historyTable th, #historyTable td {
+                padding: 8px 5px;
+                font-size: 14px;
+            }
+            #historyTable td:last-child {
+                position: relative;
+                overflow: visible;
+            }
+            #historyTable td:last-child .session-actions {
+                display: flex;
+                flex-wrap: nowrap;
+                gap: 4px;
+                justify-content: flex-start;
+                min-width: 110px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1405,13 +1456,13 @@
                         <td>${session.restingHR || '-'}</td>
                         <td>${session.vo2max ? session.vo2max.toFixed(1) : '-'}</td>
                         <td style="white-space: nowrap; min-width: 120px;">
-                            <button class="btn btn-primary btn-icon btn-small" onclick="HealthController.loadSession(${session.id})" title="Load">
+                            <button class="btn-primary btn-icon btn-small" onclick="HealthController.loadSession(${session.id})" title="Load">
                                 <i class="fas fa-upload"></i>
                             </button>
-                            <button class="btn btn-warning btn-icon btn-small" onclick="HealthController.exportSession(${session.id})" title="Export">
+                            <button class="btn-warning btn-icon btn-small" onclick="HealthController.exportSession(${session.id})" title="Export">
                                 <i class="fas fa-download"></i>
                             </button>
-                            <button class="btn btn-danger btn-icon btn-small" onclick="HealthController.deleteSession(${session.id})" title="Delete">
+                            <button class="btn-danger btn-icon btn-small" onclick="HealthController.deleteSession(${session.id})" title="Delete">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </td>
