@@ -129,18 +129,49 @@
             .form-row { flex-direction: column; }
             .history-controls { flex-direction: column; }
             .btn { width: 100%; margin-bottom: 5px; }
-                .btn-icon {
+            .btn-icon {
                 padding: 6px;
                 min-width: 32px;
+            }
+            .dataTables_wrapper .dataTables_scroll {
+                overflow-x: auto;
             }
             .dataTables_wrapper .dataTables_paginate .paginate_button {
                 padding: 5px 8px;
                 margin: 0 2px;
             }
-            
+            .history-table-container {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            .session-actions .btn-icon {
+                padding: 6px 8px;
+                min-width: 36px;
+                font-size: 12px;
+            }
+            #historyTable {
+                table-layout: auto !important;
+            }
+            #historyTable th:nth-child(8),
+            #historyTable td:nth-child(8) {
+                min-width: 120px;
+                max-width: 120px;
+                width: 120px;
+            }
             #historyTable th, #historyTable td {
                 padding: 8px 5px;
                 font-size: 14px;
+            }
+            #historyTable td:last-child {
+                position: relative;
+                overflow: visible;
+            }
+            #historyTable td:last-child .session-actions {
+                display: flex;
+                flex-wrap: nowrap;
+                gap: 4px;
+                justify-content: flex-start;
+                min-width: 110px;
             }
         }
     </style>
@@ -1471,7 +1502,7 @@
                             { width: '80px', targets: 4 },  // WHR
                             { width: '100px', targets: 5 }, // Rest HR
                             { width: '100px', targets: 6 }, // VO₂ Max
-                            { width: '120px', targets: 7 }  // Actions
+                            { width: '120px', targets: 7, orderable: false }
                         ],
                         language: {
                             emptyTable: "No sessions available",
