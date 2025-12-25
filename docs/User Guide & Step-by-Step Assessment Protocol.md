@@ -54,17 +54,16 @@ Welcome to the Comprehensive Health & Fitness Assessment System. This tool combi
 ## 📊 Complete Assessment Protocol
 
 ### Assessment Timeline
-```
-┌─────────────────┬─────────────────┬─────────────────┐
-│   Preparation   │   Assessment    │   Follow-up     │
-│   (15-20 min)   │   (20-30 min)   │   (10-15 min)   │
-├─────────────────┼─────────────────┼─────────────────┤
-│ 1. Read guide   │ 1. Basic Info   │ 1. Review       │
-│ 2. Gather tools │ 2. Body Comp    │ 2. Prescription │
-│ 3. Environment  │ 3. Health Metrics│ 3. Goal Setting│
-│ 4. Measurements │ 4. Fitness      │ 4. Save Session │
-└─────────────────┴─────────────────┴─────────────────┘
-```
+
++-----------------+------------------+-----------------+
+|   Preparation   |   Assessment     |   Follow-up     |
+|   (15-20 min)   |   (20-30 min)    |   (10-15 min)   |
++-----------------+------------------+-----------------+
+| 1. Read guide   | 1. Basic Info    | 1. Review       |
+| 2. Gather tools | 2. Body Comp     | 2. Prescription |
+| 3. Environment  | 3. Health Metrics| 3. Goal Setting |
+| 4. Measurements | 4. Fitness       | 4. Save Session |
++-----------------+------------------+-----------------+
 
 ### Assessment Frequency
 - **Beginners:** Every 4 weeks
@@ -81,7 +80,7 @@ Welcome to the Comprehensive Health & Fitness Assessment System. This tool combi
 - Review the example data pre-filled for reference
 
 #### 1.2 Enter Basic Information
-```
+
 Required Fields:
 1. Height: Stand straight, heels together, measure without shoes
 2. Weight: Use scale on hard surface, minimal clothing
@@ -89,10 +88,9 @@ Required Fields:
 4. Sex: Select biological sex for accurate calculations
 
 Measurement Tips:
-• Height: Measure against a wall, book level on head
-• Weight: Same scale, same time of day, same clothing
-• Consistency: Always measure under similar conditions
-```
+- Height: Measure against a wall, book level on head
+- Weight: Same scale, same time of day, same clothing
+- Consistency: Always measure under similar conditions
 
 **Example:**
 - Height: 175 cm (5'9")
@@ -183,25 +181,24 @@ Measurement Tips:
 - Enter measurements from your health monitoring
 
 #### 5.2 Required Health Metrics
-```
+
 1. Resting Heart Rate (RHR)
-   • Measure: Morning, before rising
-   • Method: Count pulses for 30 seconds × 2
-   • Normal: 60-100 bpm (athletes: 40-60 bpm)
+   - Measure: Morning, before rising
+   - Method: Count pulses for 30 seconds × 2
+   - Normal: 60-100 bpm (athletes: 40-60 bpm)
 
 2. Blood Pressure
-   • Position: Seated, arm supported
-   • Timing: 5 minutes rest before measurement
-   • Cuff: Appropriate size for arm
+   - Position: Seated, arm supported
+   - Timing: 5 minutes rest before measurement
+   - Cuff: Appropriate size for arm
 
 3. Blood Glucose
-   • Timing: Fasting (8-12 hours no food)
-   • Normal: 70-100 mg/dL (fasting)
+   - Timing: Fasting (8-12 hours no food)
+   - Normal: 70-100 mg/dL (fasting)
 
 4. Total Cholesterol
-   • Fasting: Required for accurate measurement
-   • Target: <200 mg/dL
-```
+   - Fasting: Required for accurate measurement
+   - Target: <200 mg/dL
 
 #### 5.3 Activity Level Selection
 Choose the category that best describes your weekly activity:
@@ -690,6 +687,7 @@ Elite: >2.0
 **Remember:** This assessment tool is designed to empower you with information about your health and fitness. Use it as a guide for making informed decisions about your lifestyle. Always prioritize safety and consult professionals when in doubt.
 
 *Last Updated: December 2025*
+
 *Document Version: 1.0*
 
 ---
