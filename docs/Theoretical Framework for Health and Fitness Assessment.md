@@ -384,4 +384,5 @@ This Comprehensive Health & Fitness Assessment System represents a practical app
 6. Thompson, W. R. (Ed.). (2014). ACSM's Clinical Exercise Physiology (2nd ed.).
 
 *Last Updated: December 2025*
+
 *Document Version: 1.0*
