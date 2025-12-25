@@ -24,13 +24,27 @@
 ├── js
 │   ├── chart.js
 │   ├── dataTables.min.js
+│   ├── i18n.js
 │   ├── jquery-3.7.0.min.js
 │   └── zangodb.min.js
 ├── manifest.json
 ├── sw.js
 ├── tree.txt
 └── webfonts
+    ├── fa-brands-400.eot
+    ├── fa-brands-400.svg
+    ├── fa-brands-400.ttf
+    ├── fa-brands-400.woff
+    ├── fa-brands-400.woff2
+    ├── fa-regular-400.eot
+    ├── fa-regular-400.svg
+    ├── fa-regular-400.ttf
+    ├── fa-regular-400.woff
+    ├── fa-regular-400.woff2
+    ├── fa-solid-900.eot
+    ├── fa-solid-900.svg
     ├── fa-solid-900.ttf
+    ├── fa-solid-900.woff
     └── fa-solid-900.woff2
 
-5 directories, 29 files
+5 directories, 43 files
