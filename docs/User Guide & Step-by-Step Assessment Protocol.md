@@ -56,8 +56,8 @@ Welcome to the Comprehensive Health & Fitness Assessment System. This tool combi
 ### Assessment Timeline
 
 +-----------------+------------------+-----------------+
-|   Preparation   |   Assessment     |   Follow-up     |
-|   (15-20 min)   |   (20-30 min)    |   (10-15 min)   |
+| Preparation     | Assessment       | Follow-up       |
+| (15-20 min)     | (20-30 min)      | (10-15 min)     |
 +-----------------+------------------+-----------------+
 | 1. Read guide   | 1. Basic Info    | 1. Review       |
 | 2. Gather tools | 2. Body Comp     | 2. Prescription |
