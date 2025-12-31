@@ -48,6 +48,7 @@
         .btn-small { padding: 6px 12px; font-size: 14px; }
         .btn-icon { padding: 8px; border-radius: 6px; min-width: 36px; }
         .btn-block { width: 100%; }
+        .btn-history-action  { border: none; margin-bottom: 5px; }
         .results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0; }
         .result-card { background: white; border-radius: var(--border-radius); padding: 15px; text-align: center; box-shadow: var(--shadow); border-left: 4px solid var(--primary-color); }
         .result-value { font-size: 24px; font-weight: bold; color: var(--primary-color); }
@@ -133,6 +134,7 @@
                 padding: 6px;
                 min-width: 32px;
             }
+            .btn-history-action  { border: none; margin-bottom: 5px; }
             .dataTables_wrapper .dataTables_scroll {
                 overflow-x: auto;
             }
@@ -144,7 +146,6 @@
                 overflow-x: auto;
                 -webkit-overflow-scrolling: touch;
             }
-            .history-table-container .btn  { margin-bottom: 5px; }
             .session-actions .btn-icon {
                 padding: 6px 8px;
                 min-width: 36px;
@@ -1510,13 +1511,13 @@
                         <td>${session.restingHR || '-'}</td>
                         <td>${session.vo2max ? session.vo2max.toFixed(1) : '-'}</td>
                         <td style="white-space: nowrap; min-width: 120px;">
-                            <button class="btn btn-primary btn-icon btn-small" onclick="HealthController.loadSession(${session.id})" title="Load">
+                            <button class="btn-history-action btn-primary btn-icon btn-small" onclick="HealthController.loadSession(${session.id})" title="Load">
                                 <i class="fas fa-upload"></i>
                             </button>
-                            <button class="btn btn-warning btn-icon btn-small" onclick="HealthController.exportSession(${session.id})" title="Export">
+                            <button class="btn-history-action btn-warning btn-icon btn-small" onclick="HealthController.exportSession(${session.id})" title="Export">
                                 <i class="fas fa-download"></i>
                             </button>
-                            <button class="btn btn-danger btn-icon btn-small" onclick="HealthController.deleteSession(${session.id})" title="Delete">
+                            <button class="btn-history-action btn-danger btn-icon btn-small" onclick="HealthController.deleteSession(${session.id})" title="Delete">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </td>
