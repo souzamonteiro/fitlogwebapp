@@ -144,6 +144,7 @@
                 overflow-x: auto;
                 -webkit-overflow-scrolling: touch;
             }
+            .history-table-container .btn  { margin-bottom: 5px; }
             .session-actions .btn-icon {
                 padding: 6px 8px;
                 min-width: 36px;
@@ -1509,13 +1510,13 @@
                         <td>${session.restingHR || '-'}</td>
                         <td>${session.vo2max ? session.vo2max.toFixed(1) : '-'}</td>
                         <td style="white-space: nowrap; min-width: 120px;">
-                            <button class="btn-primary btn-icon btn-small" onclick="HealthController.loadSession(${session.id})" title="Load">
+                            <button class="btn btn-primary btn-icon btn-small" onclick="HealthController.loadSession(${session.id})" title="Load">
                                 <i class="fas fa-upload"></i>
                             </button>
-                            <button class="btn-warning btn-icon btn-small" onclick="HealthController.exportSession(${session.id})" title="Export">
+                            <button class="btn btn-warning btn-icon btn-small" onclick="HealthController.exportSession(${session.id})" title="Export">
                                 <i class="fas fa-download"></i>
                             </button>
-                            <button class="btn-danger btn-icon btn-small" onclick="HealthController.deleteSession(${session.id})" title="Delete">
+                            <button class="btn btn-danger btn-icon btn-small" onclick="HealthController.deleteSession(${session.id})" title="Delete">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </td>
