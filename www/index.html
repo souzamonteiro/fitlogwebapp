@@ -686,7 +686,7 @@
                         <div class="form-section-title">📊 Session Comparison</div>
                         <div class="history-comparison" id="historyComparison">
                             <div class="comparison-card">
-                                <div class="form-section-title">Weight</div>
+                                <div class="form-section-title">Weight (kg)</div>
                                 <div class="comparison-value" id="comparisonWeight">-</div>
                                 <div class="comparison-change" id="comparisonWeightChange">-</div>
                             </div>
@@ -2050,7 +2050,7 @@
             
             document.getElementById('resultsComposition').style.display = 'block';
         
-            I18NHealth.updateDynamicContent();
+            I18NHealth.init();
         }
 
         function calculateHealthMetrics() {
@@ -2103,7 +2103,7 @@
             document.getElementById('healthAssessment').innerHTML = assessmentHTML;
             document.getElementById('resultsHealth').style.display = 'block';
         
-            I18NHealth.updateDynamicContent();
+            I18NHealth.init();
         }
 
         function calculateFitnessAssessment() {
@@ -2165,7 +2165,7 @@
             
             document.getElementById('resultsFitness').style.display = 'block';
         
-            I18NHealth.updateDynamicContent();
+            I18NHealth.init();
         }
 
         function generatePrescription() {
@@ -2259,7 +2259,7 @@
             
             document.getElementById('resultsPrescription').style.display = 'block';
         
-            I18NHealth.updateDynamicContent();
+            I18NHealth.init();
         }
 
         function generateComprehensiveSummary() {
@@ -2342,7 +2342,7 @@
                 `<ul>${riskHTML}</ul>` : 
                 '<p class="classification-normal">No significant risk factors identified</p>';
         
-            I18NHealth.updateDynamicContent();
+            I18NHealth.init();
         }
 
         // ========== ALIAS FUNCTIONS FOR COMPATIBILITY ==========
