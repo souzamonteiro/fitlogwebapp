@@ -323,7 +323,7 @@ const I18NHealth = {
             'Triceps (mm)': 'Tríceps (mm)',
             'Subscapular (mm)': 'Subescapular (mm)',
             'Mid-Axillary (mm)': 'Axilar Média (mm)',
-            'Pectoral (mm)': 'Pectoral (mm)',
+            'Pectoral (mm)': 'Peitoral (mm)',
             'Abdominal (mm)': 'Abdominal (mm)',
             'Suprailiac (mm)': 'Suprailíaca (mm)',
             'Thigh (mm)': 'Coxa (mm)',
@@ -892,6 +892,9 @@ const I18NHealth = {
         
         // Override alert and confirm
         this.overrideDialogs();
+        
+        // Translates the dynamic content
+        this.updateDynamicContent();
         
         console.log(`I18N Health: Language set to ${this.currentLang} (${supportedLangs[this.currentLang]})`);
     },

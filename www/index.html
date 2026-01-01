@@ -2049,6 +2049,8 @@
             document.getElementById('compResidualPercent').textContent = `${((Math.max(0, residualWeight) / userData.weight) * 100).toFixed(1)}%`;
             
             document.getElementById('resultsComposition').style.display = 'block';
+        
+            I18NHealth.updateDynamicContent();
         }
 
         function calculateHealthMetrics() {
@@ -2100,6 +2102,8 @@
             
             document.getElementById('healthAssessment').innerHTML = assessmentHTML;
             document.getElementById('resultsHealth').style.display = 'block';
+        
+            I18NHealth.updateDynamicContent();
         }
 
         function calculateFitnessAssessment() {
@@ -2160,6 +2164,8 @@
             }
             
             document.getElementById('resultsFitness').style.display = 'block';
+        
+            I18NHealth.updateDynamicContent();
         }
 
         function generatePrescription() {
@@ -2252,6 +2258,8 @@
             `;
             
             document.getElementById('resultsPrescription').style.display = 'block';
+        
+            I18NHealth.updateDynamicContent();
         }
 
         function generateComprehensiveSummary() {
@@ -2333,6 +2341,8 @@
             document.getElementById('summaryRisks').innerHTML = riskHTML ? 
                 `<ul>${riskHTML}</ul>` : 
                 '<p class="classification-normal">No significant risk factors identified</p>';
+        
+            I18NHealth.updateDynamicContent();
         }
 
         // ========== ALIAS FUNCTIONS FOR COMPATIBILITY ==========
