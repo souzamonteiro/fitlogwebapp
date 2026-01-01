@@ -895,7 +895,7 @@ const I18NHealth = {
         
         // Translates the dynamic content
         this.updateDynamicContent();
-        
+
         console.log(`I18N Health: Language set to ${this.currentLang} (${supportedLangs[this.currentLang]})`);
     },
     
