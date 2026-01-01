@@ -9,7 +9,7 @@ const urlsToCache = [
   './css/dataTables.min.css',
   './css/fontawesome.min.css',
   
-  "./js/i18n.js",
+  './js/i18n.js',
   './js/jquery-3.7.0.min.js',
   './js/dataTables.min.js',
   './js/chart.js',
