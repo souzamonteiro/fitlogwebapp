@@ -142,6 +142,7 @@
                 padding: 5px 8px;
                 margin: 0 2px;
             }
+            .export-options { flex-direction: column; }
             .history-table-container {
                 overflow-x: auto;
                 -webkit-overflow-scrolling: touch;
@@ -737,6 +738,9 @@
                         </button>
                         <button class="btn btn-primary" onclick="exportHistoryToJSON()">
                             <i class="fas fa-file-code"></i> Export to JSON
+                        </button>
+                        <button class="btn btn-primary" onclick="importHistoryFromJSON()">
+                            <i class="fas fa-upload"></i> Import from JSON
                         </button>
                         <button class="btn btn-danger" onclick="clearAllHistory()">
                             <i class="fas fa-trash"></i> Clear All History
@@ -1920,7 +1924,15 @@
                         return;
                     }
                     
-                    const jsonContent = JSON.stringify(sessions, null, 2);
+                    // Create comprehensive JSON with metadata
+                    const exportData = {
+                        exportDate: new Date().toISOString(),
+                        exportVersion: '1.0',
+                        totalSessions: sessions.length,
+                        sessions: sessions
+                    };
+                    
+                    const jsonContent = JSON.stringify(exportData, null, 2);
                     const blob = new Blob([jsonContent], { type: 'application/json;charset=utf-8;' });
                     const url = URL.createObjectURL(blob);
                     const link = document.createElement('a');
@@ -1931,11 +1943,131 @@
                     link.click();
                     document.body.removeChild(link);
                     
-                    alert(`Exported ${sessions.length} sessions to JSON.`);
+                    alert(`Successfully exported ${sessions.length} sessions to JSON.`);
                 } catch (error) {
                     console.error('Error exporting to JSON:', error);
                     alert('Error exporting data. Please try again.');
                 }
+            },
+            
+            async importHistoryFromJSON() {
+                return new Promise((resolve) => {
+                    // Create file input element
+                    const fileInput = document.createElement('input');
+                    fileInput.type = 'file';
+                    fileInput.accept = '.json';
+                    fileInput.style.display = 'none';
+                    
+                    fileInput.addEventListener('change', async (event) => {
+                        const file = event.target.files[0];
+                        if (!file) {
+                            resolve(false);
+                            return;
+                        }
+                        
+                        try {
+                            const text = await file.text();
+                            const importData = JSON.parse(text);
+                            
+                            // Validate import data structure
+                            if (!importData.sessions || !Array.isArray(importData.sessions)) {
+                                alert('Invalid file format. No sessions found in the file.');
+                                resolve(false);
+                                return;
+                            }
+                            
+                            // Ask for import mode
+                            const importMode = confirm(
+                                `Found ${importData.sessions.length} sessions in the file.\n\n` +
+                                'Click OK to MERGE with existing data (keep both).\n' +
+                                'Click Cancel to REPLACE existing data (overwrite).'
+                            ) ? 'merge' : 'replace';
+                            
+                            if (!confirm(`Are you sure you want to ${importMode} ${importData.sessions.length} sessions?`)) {
+                                resolve(false);
+                                return;
+                            }
+                            
+                            let importedCount = 0;
+                            let skippedCount = 0;
+                            
+                            if (importMode === 'replace') {
+                                // Clear existing data first
+                                await HealthModel.clearAllSessions();
+                            }
+                            
+                            // Import each session
+                            for (const session of importData.sessions) {
+                                try {
+                                    // Check for duplicate sessions in merge mode
+                                    if (importMode === 'merge') {
+                                        const existingSessions = await HealthModel.getSessions();
+                                        const isDuplicate = existingSessions.some(existing => 
+                                            existing.id === session.id || 
+                                            (existing.timestamp && session.timestamp && 
+                                            existing.timestamp === session.timestamp)
+                                        );
+                                        
+                                        if (isDuplicate) {
+                                            skippedCount++;
+                                            continue;
+                                        }
+                                    }
+                                    
+                                    // Generate new ID and timestamp if missing
+                                    const sessionToImport = {
+                                        ...session,
+                                        id: session.id || Date.now() + Math.random(),
+                                        timestamp: session.timestamp || new Date().toISOString(),
+                                        date: session.date || new Date().toLocaleDateString('en-US', {
+                                            year: 'numeric',
+                                            month: 'short',
+                                            day: 'numeric',
+                                            hour: '2-digit',
+                                            minute: '2-digit'
+                                        })
+                                    };
+                                    
+                                    await HealthModel.collection.insert(sessionToImport);
+                                    importedCount++;
+                                    
+                                } catch (sessionError) {
+                                    console.error('Error importing session:', sessionError);
+                                    skippedCount++;
+                                }
+                            }
+                            
+                            // Refresh the UI
+                            await this.refreshHistory();
+                            
+                            // Show import summary
+                            let message = `Import completed!\n\nImported: ${importedCount} sessions`;
+                            if (skippedCount > 0) {
+                                message += `\nSkipped: ${skippedCount} sessions (duplicates or errors)`;
+                            }
+                            if (importMode === 'merge') {
+                                message += '\n\nMode: Merged with existing data';
+                            } else {
+                                message += '\n\nMode: Replaced existing data';
+                            }
+                            
+                            alert(message);
+                            resolve(true);
+                            
+                        } catch (error) {
+                            console.error('Error importing JSON:', error);
+                            alert('Error importing file. Please check the file format and try again.');
+                            resolve(false);
+                        }
+                        
+                        // Clean up
+                        document.body.removeChild(fileInput);
+                    });
+                    
+                    // Trigger file selection
+                    document.body.appendChild(fileInput);
+                    fileInput.click();
+                });
             },
             
             async exportSession(id) {
@@ -2372,6 +2504,10 @@
 
         function exportHistoryToJSON() {
             return HealthController.exportHistoryToJSON();
+        }
+
+        function importHistoryFromJSON() {
+            return HealthController.importHistoryFromJSON();
         }
 
         function clearAllHistory() {
