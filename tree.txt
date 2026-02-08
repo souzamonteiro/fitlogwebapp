@@ -1,4 +1,6 @@
 .
+├── LICENSE
+├── README.md
 ├── assets
 │   ├── css
 │   │   ├── dataTables.min.css
@@ -14,6 +16,7 @@
 ├── create_certs.sh
 ├── deps
 │   ├── fontawesome-free-5.15.4-web
+│   │   ├── LICENSE.txt
 │   │   ├── attribution.js
 │   │   ├── css
 │   │   │   ├── all.css
@@ -48,23 +51,22 @@
 │   │   ├── less
 │   │   │   ├── _animated.less
 │   │   │   ├── _bordered-pulled.less
-│   │   │   ├── brands.less
 │   │   │   ├── _core.less
 │   │   │   ├── _fixed-width.less
-│   │   │   ├── fontawesome.less
 │   │   │   ├── _icons.less
 │   │   │   ├── _larger.less
 │   │   │   ├── _list.less
 │   │   │   ├── _mixins.less
-│   │   │   ├── regular.less
 │   │   │   ├── _rotated-flipped.less
 │   │   │   ├── _screen-reader.less
 │   │   │   ├── _shims.less
-│   │   │   ├── solid.less
 │   │   │   ├── _stacked.less
-│   │   │   ├── v4-shims.less
-│   │   │   └── _variables.less
-│   │   ├── LICENSE.txt
+│   │   │   ├── _variables.less
+│   │   │   ├── brands.less
+│   │   │   ├── fontawesome.less
+│   │   │   ├── regular.less
+│   │   │   ├── solid.less
+│   │   │   └── v4-shims.less
 │   │   ├── metadata
 │   │   │   ├── categories.yml
 │   │   │   ├── icons.json
@@ -75,22 +77,22 @@
 │   │   ├── scss
 │   │   │   ├── _animated.scss
 │   │   │   ├── _bordered-pulled.scss
-│   │   │   ├── brands.scss
 │   │   │   ├── _core.scss
 │   │   │   ├── _fixed-width.scss
-│   │   │   ├── fontawesome.scss
 │   │   │   ├── _icons.scss
 │   │   │   ├── _larger.scss
 │   │   │   ├── _list.scss
 │   │   │   ├── _mixins.scss
-│   │   │   ├── regular.scss
 │   │   │   ├── _rotated-flipped.scss
 │   │   │   ├── _screen-reader.scss
 │   │   │   ├── _shims.scss
-│   │   │   ├── solid.scss
 │   │   │   ├── _stacked.scss
-│   │   │   ├── v4-shims.scss
-│   │   │   └── _variables.scss
+│   │   │   ├── _variables.scss
+│   │   │   ├── brands.scss
+│   │   │   ├── fontawesome.scss
+│   │   │   ├── regular.scss
+│   │   │   ├── solid.scss
+│   │   │   └── v4-shims.scss
 │   │   ├── sprites
 │   │   │   ├── brands.svg
 │   │   │   ├── regular.svg
@@ -114,11 +116,11 @@
 │   │   │   │   ├── angellist.svg
 │   │   │   │   ├── angrycreative.svg
 │   │   │   │   ├── angular.svg
+│   │   │   │   ├── app-store-ios.svg
+│   │   │   │   ├── app-store.svg
 │   │   │   │   ├── apper.svg
 │   │   │   │   ├── apple-pay.svg
 │   │   │   │   ├── apple.svg
-│   │   │   │   ├── app-store-ios.svg
-│   │   │   │   ├── app-store.svg
 │   │   │   │   ├── artstation.svg
 │   │   │   │   ├── asymmetrik.svg
 │   │   │   │   ├── atlassian.svg
@@ -135,8 +137,8 @@
 │   │   │   │   ├── bitbucket.svg
 │   │   │   │   ├── bitcoin.svg
 │   │   │   │   ├── bity.svg
-│   │   │   │   ├── blackberry.svg
 │   │   │   │   ├── black-tie.svg
+│   │   │   │   ├── blackberry.svg
 │   │   │   │   ├── blogger-b.svg
 │   │   │   │   ├── blogger.svg
 │   │   │   │   ├── bluetooth-b.svg
@@ -160,8 +162,8 @@
 │   │   │   │   ├── cc-visa.svg
 │   │   │   │   ├── centercode.svg
 │   │   │   │   ├── centos.svg
-│   │   │   │   ├── chromecast.svg
 │   │   │   │   ├── chrome.svg
+│   │   │   │   ├── chromecast.svg
 │   │   │   │   ├── cloudflare.svg
 │   │   │   │   ├── cloudscale.svg
 │   │   │   │   ├── cloudsmith.svg
@@ -181,26 +183,26 @@
 │   │   │   │   ├── creative-commons-pd-alt.svg
 │   │   │   │   ├── creative-commons-pd.svg
 │   │   │   │   ├── creative-commons-remix.svg
+│   │   │   │   ├── creative-commons-sa.svg
 │   │   │   │   ├── creative-commons-sampling-plus.svg
 │   │   │   │   ├── creative-commons-sampling.svg
-│   │   │   │   ├── creative-commons-sa.svg
 │   │   │   │   ├── creative-commons-share.svg
-│   │   │   │   ├── creative-commons.svg
 │   │   │   │   ├── creative-commons-zero.svg
+│   │   │   │   ├── creative-commons.svg
 │   │   │   │   ├── critical-role.svg
 │   │   │   │   ├── css3-alt.svg
 │   │   │   │   ├── css3.svg
 │   │   │   │   ├── cuttlefish.svg
-│   │   │   │   ├── dailymotion.svg
 │   │   │   │   ├── d-and-d-beyond.svg
 │   │   │   │   ├── d-and-d.svg
+│   │   │   │   ├── dailymotion.svg
 │   │   │   │   ├── dashcube.svg
 │   │   │   │   ├── deezer.svg
 │   │   │   │   ├── delicious.svg
 │   │   │   │   ├── deploydog.svg
 │   │   │   │   ├── deskpro.svg
-│   │   │   │   ├── deviantart.svg
 │   │   │   │   ├── dev.svg
+│   │   │   │   ├── deviantart.svg
 │   │   │   │   ├── dhl.svg
 │   │   │   │   ├── diaspora.svg
 │   │   │   │   ├── digg.svg
@@ -239,9 +241,9 @@
 │   │   │   │   ├── figma.svg
 │   │   │   │   ├── firefox-browser.svg
 │   │   │   │   ├── firefox.svg
-│   │   │   │   ├── firstdraft.svg
 │   │   │   │   ├── first-order-alt.svg
 │   │   │   │   ├── first-order.svg
+│   │   │   │   ├── firstdraft.svg
 │   │   │   │   ├── flickr.svg
 │   │   │   │   ├── flipboard.svg
 │   │   │   │   ├── fly.svg
@@ -255,8 +257,8 @@
 │   │   │   │   ├── fort-awesome.svg
 │   │   │   │   ├── forumbee.svg
 │   │   │   │   ├── foursquare.svg
-│   │   │   │   ├── freebsd.svg
 │   │   │   │   ├── free-code-camp.svg
+│   │   │   │   ├── freebsd.svg
 │   │   │   │   ├── fulcrum.svg
 │   │   │   │   ├── galactic-republic.svg
 │   │   │   │   ├── galactic-senate.svg
@@ -264,13 +266,13 @@
 │   │   │   │   ├── gg-circle.svg
 │   │   │   │   ├── gg.svg
 │   │   │   │   ├── git-alt.svg
+│   │   │   │   ├── git-square.svg
+│   │   │   │   ├── git.svg
 │   │   │   │   ├── github-alt.svg
 │   │   │   │   ├── github-square.svg
 │   │   │   │   ├── github.svg
 │   │   │   │   ├── gitkraken.svg
 │   │   │   │   ├── gitlab.svg
-│   │   │   │   ├── git-square.svg
-│   │   │   │   ├── git.svg
 │   │   │   │   ├── gitter.svg
 │   │   │   │   ├── glide-g.svg
 │   │   │   │   ├── glide.svg
@@ -283,8 +285,8 @@
 │   │   │   │   ├── google-plus-g.svg
 │   │   │   │   ├── google-plus-square.svg
 │   │   │   │   ├── google-plus.svg
-│   │   │   │   ├── google.svg
 │   │   │   │   ├── google-wallet.svg
+│   │   │   │   ├── google.svg
 │   │   │   │   ├── gratipay.svg
 │   │   │   │   ├── grav.svg
 │   │   │   │   ├── gripfire.svg
@@ -322,9 +324,9 @@
 │   │   │   │   ├── jira.svg
 │   │   │   │   ├── joget.svg
 │   │   │   │   ├── joomla.svg
-│   │   │   │   ├── jsfiddle.svg
 │   │   │   │   ├── js-square.svg
 │   │   │   │   ├── js.svg
+│   │   │   │   ├── jsfiddle.svg
 │   │   │   │   ├── kaggle.svg
 │   │   │   │   ├── keybase.svg
 │   │   │   │   ├── keycdn.svg
@@ -358,9 +360,9 @@
 │   │   │   │   ├── mendeley.svg
 │   │   │   │   ├── microblog.svg
 │   │   │   │   ├── microsoft.svg
+│   │   │   │   ├── mix.svg
 │   │   │   │   ├── mixcloud.svg
 │   │   │   │   ├── mixer.svg
-│   │   │   │   ├── mix.svg
 │   │   │   │   ├── mizuni.svg
 │   │   │   │   ├── modx.svg
 │   │   │   │   ├── monero.svg
@@ -409,17 +411,18 @@
 │   │   │   │   ├── qq.svg
 │   │   │   │   ├── quinscape.svg
 │   │   │   │   ├── quora.svg
+│   │   │   │   ├── r-project.svg
 │   │   │   │   ├── raspberry-pi.svg
 │   │   │   │   ├── ravelry.svg
-│   │   │   │   ├── reacteurope.svg
 │   │   │   │   ├── react.svg
+│   │   │   │   ├── reacteurope.svg
 │   │   │   │   ├── readme.svg
 │   │   │   │   ├── rebel.svg
+│   │   │   │   ├── red-river.svg
 │   │   │   │   ├── reddit-alien.svg
 │   │   │   │   ├── reddit-square.svg
 │   │   │   │   ├── reddit.svg
 │   │   │   │   ├── redhat.svg
-│   │   │   │   ├── red-river.svg
 │   │   │   │   ├── renren.svg
 │   │   │   │   ├── replyd.svg
 │   │   │   │   ├── researchgate.svg
@@ -427,7 +430,6 @@
 │   │   │   │   ├── rev.svg
 │   │   │   │   ├── rocketchat.svg
 │   │   │   │   ├── rockrms.svg
-│   │   │   │   ├── r-project.svg
 │   │   │   │   ├── rust.svg
 │   │   │   │   ├── safari.svg
 │   │   │   │   ├── salesforce.svg
@@ -464,8 +466,8 @@
 │   │   │   │   ├── stackpath.svg
 │   │   │   │   ├── staylinked.svg
 │   │   │   │   ├── steam-square.svg
-│   │   │   │   ├── steam.svg
 │   │   │   │   ├── steam-symbol.svg
+│   │   │   │   ├── steam.svg
 │   │   │   │   ├── sticker-mule.svg
 │   │   │   │   ├── strava.svg
 │   │   │   │   ├── stripe-s.svg
@@ -482,9 +484,9 @@
 │   │   │   │   ├── telegram-plane.svg
 │   │   │   │   ├── telegram.svg
 │   │   │   │   ├── tencent-weibo.svg
+│   │   │   │   ├── the-red-yeti.svg
 │   │   │   │   ├── themeco.svg
 │   │   │   │   ├── themeisle.svg
-│   │   │   │   ├── the-red-yeti.svg
 │   │   │   │   ├── think-peaks.svg
 │   │   │   │   ├── tiktok.svg
 │   │   │   │   ├── trade-federation.svg
@@ -514,8 +516,8 @@
 │   │   │   │   ├── viadeo.svg
 │   │   │   │   ├── viber.svg
 │   │   │   │   ├── vimeo-square.svg
-│   │   │   │   ├── vimeo.svg
 │   │   │   │   ├── vimeo-v.svg
+│   │   │   │   ├── vimeo.svg
 │   │   │   │   ├── vine.svg
 │   │   │   │   ├── vk.svg
 │   │   │   │   ├── vnv.svg
@@ -543,12 +545,12 @@
 │   │   │   │   ├── xbox.svg
 │   │   │   │   ├── xing-square.svg
 │   │   │   │   ├── xing.svg
+│   │   │   │   ├── y-combinator.svg
 │   │   │   │   ├── yahoo.svg
 │   │   │   │   ├── yammer.svg
 │   │   │   │   ├── yandex-international.svg
 │   │   │   │   ├── yandex.svg
 │   │   │   │   ├── yarn.svg
-│   │   │   │   ├── y-combinator.svg
 │   │   │   │   ├── yelp.svg
 │   │   │   │   ├── yoast.svg
 │   │   │   │   ├── youtube-square.svg
@@ -570,8 +572,8 @@
 │   │   │   │   ├── calendar-check.svg
 │   │   │   │   ├── calendar-minus.svg
 │   │   │   │   ├── calendar-plus.svg
-│   │   │   │   ├── calendar.svg
 │   │   │   │   ├── calendar-times.svg
+│   │   │   │   ├── calendar.svg
 │   │   │   │   ├── caret-square-down.svg
 │   │   │   │   ├── caret-square-left.svg
 │   │   │   │   ├── caret-square-right.svg
@@ -586,11 +588,11 @@
 │   │   │   │   ├── closed-captioning.svg
 │   │   │   │   ├── comment-alt.svg
 │   │   │   │   ├── comment-dots.svg
-│   │   │   │   ├── comments.svg
 │   │   │   │   ├── comment.svg
+│   │   │   │   ├── comments.svg
 │   │   │   │   ├── compass.svg
-│   │   │   │   ├── copyright.svg
 │   │   │   │   ├── copy.svg
+│   │   │   │   ├── copyright.svg
 │   │   │   │   ├── credit-card.svg
 │   │   │   │   ├── dizzy.svg
 │   │   │   │   ├── dot-circle.svg
@@ -607,9 +609,9 @@
 │   │   │   │   ├── file-image.svg
 │   │   │   │   ├── file-pdf.svg
 │   │   │   │   ├── file-powerpoint.svg
-│   │   │   │   ├── file.svg
 │   │   │   │   ├── file-video.svg
 │   │   │   │   ├── file-word.svg
+│   │   │   │   ├── file.svg
 │   │   │   │   ├── flag.svg
 │   │   │   │   ├── flushed.svg
 │   │   │   │   ├── folder-open.svg
@@ -621,46 +623,46 @@
 │   │   │   │   ├── gem.svg
 │   │   │   │   ├── grimace.svg
 │   │   │   │   ├── grin-alt.svg
-│   │   │   │   ├── grin-beam.svg
 │   │   │   │   ├── grin-beam-sweat.svg
+│   │   │   │   ├── grin-beam.svg
 │   │   │   │   ├── grin-hearts.svg
-│   │   │   │   ├── grin-squint.svg
 │   │   │   │   ├── grin-squint-tears.svg
+│   │   │   │   ├── grin-squint.svg
 │   │   │   │   ├── grin-stars.svg
-│   │   │   │   ├── grin.svg
 │   │   │   │   ├── grin-tears.svg
 │   │   │   │   ├── grin-tongue-squint.svg
-│   │   │   │   ├── grin-tongue.svg
 │   │   │   │   ├── grin-tongue-wink.svg
+│   │   │   │   ├── grin-tongue.svg
 │   │   │   │   ├── grin-wink.svg
+│   │   │   │   ├── grin.svg
 │   │   │   │   ├── hand-lizard.svg
 │   │   │   │   ├── hand-paper.svg
 │   │   │   │   ├── hand-peace.svg
 │   │   │   │   ├── hand-point-down.svg
-│   │   │   │   ├── hand-pointer.svg
 │   │   │   │   ├── hand-point-left.svg
 │   │   │   │   ├── hand-point-right.svg
 │   │   │   │   ├── hand-point-up.svg
+│   │   │   │   ├── hand-pointer.svg
 │   │   │   │   ├── hand-rock.svg
 │   │   │   │   ├── hand-scissors.svg
-│   │   │   │   ├── handshake.svg
 │   │   │   │   ├── hand-spock.svg
+│   │   │   │   ├── handshake.svg
 │   │   │   │   ├── hdd.svg
 │   │   │   │   ├── heart.svg
 │   │   │   │   ├── hospital.svg
 │   │   │   │   ├── hourglass.svg
 │   │   │   │   ├── id-badge.svg
 │   │   │   │   ├── id-card.svg
-│   │   │   │   ├── images.svg
 │   │   │   │   ├── image.svg
+│   │   │   │   ├── images.svg
 │   │   │   │   ├── keyboard.svg
 │   │   │   │   ├── kiss-beam.svg
-│   │   │   │   ├── kiss.svg
 │   │   │   │   ├── kiss-wink-heart.svg
+│   │   │   │   ├── kiss.svg
 │   │   │   │   ├── laugh-beam.svg
 │   │   │   │   ├── laugh-squint.svg
-│   │   │   │   ├── laugh.svg
 │   │   │   │   ├── laugh-wink.svg
+│   │   │   │   ├── laugh.svg
 │   │   │   │   ├── lemon.svg
 │   │   │   │   ├── life-ring.svg
 │   │   │   │   ├── lightbulb.svg
@@ -686,8 +688,8 @@
 │   │   │   │   ├── save.svg
 │   │   │   │   ├── share-square.svg
 │   │   │   │   ├── smile-beam.svg
-│   │   │   │   ├── smile.svg
 │   │   │   │   ├── smile-wink.svg
+│   │   │   │   ├── smile.svg
 │   │   │   │   ├── snowflake.svg
 │   │   │   │   ├── square.svg
 │   │   │   │   ├── star-half.svg
@@ -708,10 +710,10 @@
 │   │   │   │   ├── window-minimize.svg
 │   │   │   │   └── window-restore.svg
 │   │   │   └── solid
+│   │   │       ├── ad.svg
 │   │   │       ├── address-book.svg
 │   │   │       ├── address-card.svg
 │   │   │       ├── adjust.svg
-│   │   │       ├── ad.svg
 │   │   │       ├── air-freshener.svg
 │   │   │       ├── align-center.svg
 │   │   │       ├── align-justify.svg
@@ -745,15 +747,15 @@
 │   │   │       ├── arrow-down.svg
 │   │   │       ├── arrow-left.svg
 │   │   │       ├── arrow-right.svg
-│   │   │       ├── arrows-alt-h.svg
-│   │   │       ├── arrows-alt.svg
-│   │   │       ├── arrows-alt-v.svg
 │   │   │       ├── arrow-up.svg
+│   │   │       ├── arrows-alt-h.svg
+│   │   │       ├── arrows-alt-v.svg
+│   │   │       ├── arrows-alt.svg
 │   │   │       ├── assistive-listening-systems.svg
 │   │   │       ├── asterisk.svg
+│   │   │       ├── at.svg
 │   │   │       ├── atlas.svg
 │   │   │       ├── atom.svg
-│   │   │       ├── at.svg
 │   │   │       ├── audio-description.svg
 │   │   │       ├── award.svg
 │   │   │       ├── baby-carriage.svg
@@ -767,8 +769,8 @@
 │   │   │       ├── balance-scale-left.svg
 │   │   │       ├── balance-scale-right.svg
 │   │   │       ├── balance-scale.svg
-│   │   │       ├── band-aid.svg
 │   │   │       ├── ban.svg
+│   │   │       ├── band-aid.svg
 │   │   │       ├── barcode.svg
 │   │   │       ├── bars.svg
 │   │   │       ├── baseball-ball.svg
@@ -800,19 +802,19 @@
 │   │   │       ├── bone.svg
 │   │   │       ├── bong.svg
 │   │   │       ├── book-dead.svg
-│   │   │       ├── bookmark.svg
 │   │   │       ├── book-medical.svg
 │   │   │       ├── book-open.svg
 │   │   │       ├── book-reader.svg
 │   │   │       ├── book.svg
+│   │   │       ├── bookmark.svg
 │   │   │       ├── border-all.svg
 │   │   │       ├── border-none.svg
 │   │   │       ├── border-style.svg
 │   │   │       ├── bowling-ball.svg
-│   │   │       ├── boxes.svg
 │   │   │       ├── box-open.svg
-│   │   │       ├── box.svg
 │   │   │       ├── box-tissue.svg
+│   │   │       ├── box.svg
+│   │   │       ├── boxes.svg
 │   │   │       ├── braille.svg
 │   │   │       ├── brain.svg
 │   │   │       ├── bread-slice.svg
@@ -827,17 +829,17 @@
 │   │   │       ├── bullseye.svg
 │   │   │       ├── burn.svg
 │   │   │       ├── bus-alt.svg
-│   │   │       ├── business-time.svg
 │   │   │       ├── bus.svg
+│   │   │       ├── business-time.svg
 │   │   │       ├── calculator.svg
 │   │   │       ├── calendar-alt.svg
 │   │   │       ├── calendar-check.svg
 │   │   │       ├── calendar-day.svg
 │   │   │       ├── calendar-minus.svg
 │   │   │       ├── calendar-plus.svg
-│   │   │       ├── calendar.svg
 │   │   │       ├── calendar-times.svg
 │   │   │       ├── calendar-week.svg
+│   │   │       ├── calendar.svg
 │   │   │       ├── camera-retro.svg
 │   │   │       ├── camera.svg
 │   │   │       ├── campground.svg
@@ -845,9 +847,11 @@
 │   │   │       ├── cannabis.svg
 │   │   │       ├── capsules.svg
 │   │   │       ├── car-alt.svg
-│   │   │       ├── caravan.svg
 │   │   │       ├── car-battery.svg
 │   │   │       ├── car-crash.svg
+│   │   │       ├── car-side.svg
+│   │   │       ├── car.svg
+│   │   │       ├── caravan.svg
 │   │   │       ├── caret-down.svg
 │   │   │       ├── caret-left.svg
 │   │   │       ├── caret-right.svg
@@ -857,16 +861,14 @@
 │   │   │       ├── caret-square-up.svg
 │   │   │       ├── caret-up.svg
 │   │   │       ├── carrot.svg
-│   │   │       ├── car-side.svg
-│   │   │       ├── car.svg
 │   │   │       ├── cart-arrow-down.svg
 │   │   │       ├── cart-plus.svg
 │   │   │       ├── cash-register.svg
 │   │   │       ├── cat.svg
 │   │   │       ├── certificate.svg
 │   │   │       ├── chair.svg
-│   │   │       ├── chalkboard.svg
 │   │   │       ├── chalkboard-teacher.svg
+│   │   │       ├── chalkboard.svg
 │   │   │       ├── charging-station.svg
 │   │   │       ├── chart-area.svg
 │   │   │       ├── chart-bar.svg
@@ -913,24 +915,24 @@
 │   │   │       ├── cloud-showers-heavy.svg
 │   │   │       ├── cloud-sun-rain.svg
 │   │   │       ├── cloud-sun.svg
-│   │   │       ├── cloud.svg
 │   │   │       ├── cloud-upload-alt.svg
+│   │   │       ├── cloud.svg
 │   │   │       ├── cocktail.svg
 │   │   │       ├── code-branch.svg
 │   │   │       ├── code.svg
 │   │   │       ├── coffee.svg
-│   │   │       ├── cogs.svg
 │   │   │       ├── cog.svg
+│   │   │       ├── cogs.svg
 │   │   │       ├── coins.svg
 │   │   │       ├── columns.svg
 │   │   │       ├── comment-alt.svg
 │   │   │       ├── comment-dollar.svg
 │   │   │       ├── comment-dots.svg
 │   │   │       ├── comment-medical.svg
-│   │   │       ├── comments-dollar.svg
 │   │   │       ├── comment-slash.svg
-│   │   │       ├── comments.svg
 │   │   │       ├── comment.svg
+│   │   │       ├── comments-dollar.svg
+│   │   │       ├── comments.svg
 │   │   │       ├── compact-disc.svg
 │   │   │       ├── compass.svg
 │   │   │       ├── compress-alt.svg
@@ -939,19 +941,19 @@
 │   │   │       ├── concierge-bell.svg
 │   │   │       ├── cookie-bite.svg
 │   │   │       ├── cookie.svg
-│   │   │       ├── copyright.svg
 │   │   │       ├── copy.svg
+│   │   │       ├── copyright.svg
 │   │   │       ├── couch.svg
 │   │   │       ├── credit-card.svg
 │   │   │       ├── crop-alt.svg
 │   │   │       ├── crop.svg
-│   │   │       ├── crosshairs.svg
 │   │   │       ├── cross.svg
-│   │   │       ├── crown.svg
+│   │   │       ├── crosshairs.svg
 │   │   │       ├── crow.svg
+│   │   │       ├── crown.svg
 │   │   │       ├── crutch.svg
-│   │   │       ├── cubes.svg
 │   │   │       ├── cube.svg
+│   │   │       ├── cubes.svg
 │   │   │       ├── cut.svg
 │   │   │       ├── database.svg
 │   │   │       ├── deaf.svg
@@ -965,9 +967,9 @@
 │   │   │       ├── dice-four.svg
 │   │   │       ├── dice-one.svg
 │   │   │       ├── dice-six.svg
-│   │   │       ├── dice.svg
 │   │   │       ├── dice-three.svg
 │   │   │       ├── dice-two.svg
+│   │   │       ├── dice.svg
 │   │   │       ├── digital-tachograph.svg
 │   │   │       ├── directions.svg
 │   │   │       ├── disease.svg
@@ -988,8 +990,8 @@
 │   │   │       ├── dragon.svg
 │   │   │       ├── draw-polygon.svg
 │   │   │       ├── drum-steelpan.svg
-│   │   │       ├── drumstick-bite.svg
 │   │   │       ├── drum.svg
+│   │   │       ├── drumstick-bite.svg
 │   │   │       ├── dumbbell.svg
 │   │   │       ├── dumpster-fire.svg
 │   │   │       ├── dumpster.svg
@@ -999,8 +1001,8 @@
 │   │   │       ├── eject.svg
 │   │   │       ├── ellipsis-h.svg
 │   │   │       ├── ellipsis-v.svg
-│   │   │       ├── envelope-open.svg
 │   │   │       ├── envelope-open-text.svg
+│   │   │       ├── envelope-open.svg
 │   │   │       ├── envelope-square.svg
 │   │   │       ├── envelope.svg
 │   │   │       ├── equals.svg
@@ -1009,8 +1011,8 @@
 │   │   │       ├── euro-sign.svg
 │   │   │       ├── exchange-alt.svg
 │   │   │       ├── exclamation-circle.svg
-│   │   │       ├── exclamation.svg
 │   │   │       ├── exclamation-triangle.svg
+│   │   │       ├── exclamation.svg
 │   │   │       ├── expand-alt.svg
 │   │   │       ├── expand-arrows-alt.svg
 │   │   │       ├── expand.svg
@@ -1047,10 +1049,10 @@
 │   │   │       ├── file-powerpoint.svg
 │   │   │       ├── file-prescription.svg
 │   │   │       ├── file-signature.svg
-│   │   │       ├── file.svg
 │   │   │       ├── file-upload.svg
 │   │   │       ├── file-video.svg
 │   │   │       ├── file-word.svg
+│   │   │       ├── file.svg
 │   │   │       ├── fill-drip.svg
 │   │   │       ├── fill.svg
 │   │   │       ├── film.svg
@@ -1063,8 +1065,8 @@
 │   │   │       ├── fish.svg
 │   │   │       ├── fist-raised.svg
 │   │   │       ├── flag-checkered.svg
-│   │   │       ├── flag.svg
 │   │   │       ├── flag-usa.svg
+│   │   │       ├── flag.svg
 │   │   │       ├── flask.svg
 │   │   │       ├── flushed.svg
 │   │   │       ├── folder-minus.svg
@@ -1086,13 +1088,13 @@
 │   │   │       ├── gem.svg
 │   │   │       ├── genderless.svg
 │   │   │       ├── ghost.svg
-│   │   │       ├── gifts.svg
 │   │   │       ├── gift.svg
+│   │   │       ├── gifts.svg
 │   │   │       ├── glass-cheers.svg
-│   │   │       ├── glasses.svg
 │   │   │       ├── glass-martini-alt.svg
 │   │   │       ├── glass-martini.svg
 │   │   │       ├── glass-whiskey.svg
+│   │   │       ├── glasses.svg
 │   │   │       ├── globe-africa.svg
 │   │   │       ├── globe-americas.svg
 │   │   │       ├── globe-asia.svg
@@ -1105,50 +1107,51 @@
 │   │   │       ├── greater-than.svg
 │   │   │       ├── grimace.svg
 │   │   │       ├── grin-alt.svg
-│   │   │       ├── grin-beam.svg
 │   │   │       ├── grin-beam-sweat.svg
+│   │   │       ├── grin-beam.svg
 │   │   │       ├── grin-hearts.svg
-│   │   │       ├── grin-squint.svg
 │   │   │       ├── grin-squint-tears.svg
+│   │   │       ├── grin-squint.svg
 │   │   │       ├── grin-stars.svg
-│   │   │       ├── grin.svg
 │   │   │       ├── grin-tears.svg
 │   │   │       ├── grin-tongue-squint.svg
-│   │   │       ├── grin-tongue.svg
 │   │   │       ├── grin-tongue-wink.svg
+│   │   │       ├── grin-tongue.svg
 │   │   │       ├── grin-wink.svg
+│   │   │       ├── grin.svg
 │   │   │       ├── grip-horizontal.svg
-│   │   │       ├── grip-lines.svg
 │   │   │       ├── grip-lines-vertical.svg
+│   │   │       ├── grip-lines.svg
 │   │   │       ├── grip-vertical.svg
 │   │   │       ├── guitar.svg
+│   │   │       ├── h-square.svg
 │   │   │       ├── hamburger.svg
 │   │   │       ├── hammer.svg
 │   │   │       ├── hamsa.svg
 │   │   │       ├── hand-holding-heart.svg
 │   │   │       ├── hand-holding-medical.svg
-│   │   │       ├── hand-holding.svg
 │   │   │       ├── hand-holding-usd.svg
 │   │   │       ├── hand-holding-water.svg
+│   │   │       ├── hand-holding.svg
 │   │   │       ├── hand-lizard.svg
 │   │   │       ├── hand-middle-finger.svg
 │   │   │       ├── hand-paper.svg
 │   │   │       ├── hand-peace.svg
 │   │   │       ├── hand-point-down.svg
-│   │   │       ├── hand-pointer.svg
 │   │   │       ├── hand-point-left.svg
 │   │   │       ├── hand-point-right.svg
 │   │   │       ├── hand-point-up.svg
+│   │   │       ├── hand-pointer.svg
 │   │   │       ├── hand-rock.svg
 │   │   │       ├── hand-scissors.svg
+│   │   │       ├── hand-sparkles.svg
+│   │   │       ├── hand-spock.svg
+│   │   │       ├── hands-helping.svg
+│   │   │       ├── hands-wash.svg
+│   │   │       ├── hands.svg
 │   │   │       ├── handshake-alt-slash.svg
 │   │   │       ├── handshake-slash.svg
 │   │   │       ├── handshake.svg
-│   │   │       ├── hands-helping.svg
-│   │   │       ├── hand-sparkles.svg
-│   │   │       ├── hand-spock.svg
-│   │   │       ├── hands.svg
-│   │   │       ├── hands-wash.svg
 │   │   │       ├── hanukiah.svg
 │   │   │       ├── hard-hat.svg
 │   │   │       ├── hashtag.svg
@@ -1156,17 +1159,17 @@
 │   │   │       ├── hat-cowboy.svg
 │   │   │       ├── hat-wizard.svg
 │   │   │       ├── hdd.svg
-│   │   │       ├── heading.svg
-│   │   │       ├── headphones-alt.svg
-│   │   │       ├── headphones.svg
-│   │   │       ├── headset.svg
 │   │   │       ├── head-side-cough-slash.svg
 │   │   │       ├── head-side-cough.svg
 │   │   │       ├── head-side-mask.svg
 │   │   │       ├── head-side-virus.svg
-│   │   │       ├── heartbeat.svg
+│   │   │       ├── heading.svg
+│   │   │       ├── headphones-alt.svg
+│   │   │       ├── headphones.svg
+│   │   │       ├── headset.svg
 │   │   │       ├── heart-broken.svg
 │   │   │       ├── heart.svg
+│   │   │       ├── heartbeat.svg
 │   │   │       ├── helicopter.svg
 │   │   │       ├── highlighter.svg
 │   │   │       ├── hiking.svg
@@ -1178,12 +1181,12 @@
 │   │   │       ├── horse-head.svg
 │   │   │       ├── horse.svg
 │   │   │       ├── hospital-alt.svg
-│   │   │       ├── hospital.svg
 │   │   │       ├── hospital-symbol.svg
 │   │   │       ├── hospital-user.svg
+│   │   │       ├── hospital.svg
+│   │   │       ├── hot-tub.svg
 │   │   │       ├── hotdog.svg
 │   │   │       ├── hotel.svg
-│   │   │       ├── hot-tub.svg
 │   │   │       ├── hourglass-end.svg
 │   │   │       ├── hourglass-half.svg
 │   │   │       ├── hourglass-start.svg
@@ -1191,17 +1194,16 @@
 │   │   │       ├── house-damage.svg
 │   │   │       ├── house-user.svg
 │   │   │       ├── hryvnia.svg
-│   │   │       ├── h-square.svg
+│   │   │       ├── i-cursor.svg
 │   │   │       ├── ice-cream.svg
 │   │   │       ├── icicles.svg
 │   │   │       ├── icons.svg
-│   │   │       ├── i-cursor.svg
 │   │   │       ├── id-badge.svg
 │   │   │       ├── id-card-alt.svg
 │   │   │       ├── id-card.svg
 │   │   │       ├── igloo.svg
-│   │   │       ├── images.svg
 │   │   │       ├── image.svg
+│   │   │       ├── images.svg
 │   │   │       ├── inbox.svg
 │   │   │       ├── indent.svg
 │   │   │       ├── industry.svg
@@ -1213,12 +1215,12 @@
 │   │   │       ├── joint.svg
 │   │   │       ├── journal-whills.svg
 │   │   │       ├── kaaba.svg
-│   │   │       ├── keyboard.svg
 │   │   │       ├── key.svg
+│   │   │       ├── keyboard.svg
 │   │   │       ├── khanda.svg
 │   │   │       ├── kiss-beam.svg
-│   │   │       ├── kiss.svg
 │   │   │       ├── kiss-wink-heart.svg
+│   │   │       ├── kiss.svg
 │   │   │       ├── kiwi-bird.svg
 │   │   │       ├── landmark.svg
 │   │   │       ├── language.svg
@@ -1228,8 +1230,8 @@
 │   │   │       ├── laptop.svg
 │   │   │       ├── laugh-beam.svg
 │   │   │       ├── laugh-squint.svg
-│   │   │       ├── laugh.svg
 │   │   │       ├── laugh-wink.svg
+│   │   │       ├── laugh.svg
 │   │   │       ├── layer-group.svg
 │   │   │       ├── leaf.svg
 │   │   │       ├── lemon.svg
@@ -1243,8 +1245,8 @@
 │   │   │       ├── lira-sign.svg
 │   │   │       ├── list-alt.svg
 │   │   │       ├── list-ol.svg
-│   │   │       ├── list.svg
 │   │   │       ├── list-ul.svg
+│   │   │       ├── list.svg
 │   │   │       ├── location-arrow.svg
 │   │   │       ├── lock-open.svg
 │   │   │       ├── lock.svg
@@ -1254,8 +1256,8 @@
 │   │   │       ├── long-arrow-alt-up.svg
 │   │   │       ├── low-vision.svg
 │   │   │       ├── luggage-cart.svg
-│   │   │       ├── lungs.svg
 │   │   │       ├── lungs-virus.svg
+│   │   │       ├── lungs.svg
 │   │   │       ├── magic.svg
 │   │   │       ├── magnet.svg
 │   │   │       ├── mail-bulk.svg
@@ -1270,8 +1272,8 @@
 │   │   │       ├── marker.svg
 │   │   │       ├── mars-double.svg
 │   │   │       ├── mars-stroke-h.svg
-│   │   │       ├── mars-stroke.svg
 │   │   │       ├── mars-stroke-v.svg
+│   │   │       ├── mars-stroke.svg
 │   │   │       ├── mars.svg
 │   │   │       ├── mask.svg
 │   │   │       ├── medal.svg
@@ -1296,9 +1298,9 @@
 │   │   │       ├── mobile-alt.svg
 │   │   │       ├── mobile.svg
 │   │   │       ├── money-bill-alt.svg
-│   │   │       ├── money-bill.svg
 │   │   │       ├── money-bill-wave-alt.svg
 │   │   │       ├── money-bill-wave.svg
+│   │   │       ├── money-bill.svg
 │   │   │       ├── money-check-alt.svg
 │   │   │       ├── money-check.svg
 │   │   │       ├── monument.svg
@@ -1327,8 +1329,8 @@
 │   │   │       ├── paint-roller.svg
 │   │   │       ├── palette.svg
 │   │   │       ├── pallet.svg
-│   │   │       ├── paperclip.svg
 │   │   │       ├── paper-plane.svg
+│   │   │       ├── paperclip.svg
 │   │   │       ├── parachute-box.svg
 │   │   │       ├── paragraph.svg
 │   │   │       ├── parking.svg
@@ -1340,24 +1342,24 @@
 │   │   │       ├── paw.svg
 │   │   │       ├── peace.svg
 │   │   │       ├── pen-alt.svg
-│   │   │       ├── pencil-alt.svg
-│   │   │       ├── pencil-ruler.svg
 │   │   │       ├── pen-fancy.svg
 │   │   │       ├── pen-nib.svg
 │   │   │       ├── pen-square.svg
 │   │   │       ├── pen.svg
+│   │   │       ├── pencil-alt.svg
+│   │   │       ├── pencil-ruler.svg
 │   │   │       ├── people-arrows.svg
 │   │   │       ├── people-carry.svg
 │   │   │       ├── pepper-hot.svg
-│   │   │       ├── percentage.svg
 │   │   │       ├── percent.svg
+│   │   │       ├── percentage.svg
 │   │   │       ├── person-booth.svg
 │   │   │       ├── phone-alt.svg
 │   │   │       ├── phone-slash.svg
 │   │   │       ├── phone-square-alt.svg
 │   │   │       ├── phone-square.svg
-│   │   │       ├── phone.svg
 │   │   │       ├── phone-volume.svg
+│   │   │       ├── phone.svg
 │   │   │       ├── photo-video.svg
 │   │   │       ├── piggy-bank.svg
 │   │   │       ├── pills.svg
@@ -1376,14 +1378,14 @@
 │   │   │       ├── podcast.svg
 │   │   │       ├── poll-h.svg
 │   │   │       ├── poll.svg
-│   │   │       ├── poop.svg
 │   │   │       ├── poo-storm.svg
 │   │   │       ├── poo.svg
+│   │   │       ├── poop.svg
 │   │   │       ├── portrait.svg
 │   │   │       ├── pound-sign.svg
 │   │   │       ├── power-off.svg
-│   │   │       ├── praying-hands.svg
 │   │   │       ├── pray.svg
+│   │   │       ├── praying-hands.svg
 │   │   │       ├── prescription-bottle-alt.svg
 │   │   │       ├── prescription-bottle.svg
 │   │   │       ├── prescription.svg
@@ -1427,8 +1429,8 @@
 │   │   │       ├── ruble-sign.svg
 │   │   │       ├── ruler-combined.svg
 │   │   │       ├── ruler-horizontal.svg
-│   │   │       ├── ruler.svg
 │   │   │       ├── ruler-vertical.svg
+│   │   │       ├── ruler.svg
 │   │   │       ├── running.svg
 │   │   │       ├── rupee-sign.svg
 │   │   │       ├── sad-cry.svg
@@ -1455,20 +1457,20 @@
 │   │   │       ├── shekel-sign.svg
 │   │   │       ├── shield-alt.svg
 │   │   │       ├── shield-virus.svg
-│   │   │       ├── shipping-fast.svg
 │   │   │       ├── ship.svg
+│   │   │       ├── shipping-fast.svg
 │   │   │       ├── shoe-prints.svg
 │   │   │       ├── shopping-bag.svg
 │   │   │       ├── shopping-basket.svg
 │   │   │       ├── shopping-cart.svg
 │   │   │       ├── shower.svg
 │   │   │       ├── shuttle-van.svg
-│   │   │       ├── signal.svg
-│   │   │       ├── signature.svg
 │   │   │       ├── sign-in-alt.svg
 │   │   │       ├── sign-language.svg
 │   │   │       ├── sign-out-alt.svg
 │   │   │       ├── sign.svg
+│   │   │       ├── signal.svg
+│   │   │       ├── signature.svg
 │   │   │       ├── sim-card.svg
 │   │   │       ├── sink.svg
 │   │   │       ├── sitemap.svg
@@ -1481,8 +1483,8 @@
 │   │   │       ├── sleigh.svg
 │   │   │       ├── sliders-h.svg
 │   │   │       ├── smile-beam.svg
-│   │   │       ├── smile.svg
 │   │   │       ├── smile-wink.svg
+│   │   │       ├── smile.svg
 │   │   │       ├── smog.svg
 │   │   │       ├── smoking-ban.svg
 │   │   │       ├── smoking.svg
@@ -1507,10 +1509,10 @@
 │   │   │       ├── sort-numeric-down.svg
 │   │   │       ├── sort-numeric-up-alt.svg
 │   │   │       ├── sort-numeric-up.svg
-│   │   │       ├── sort.svg
 │   │   │       ├── sort-up.svg
-│   │   │       ├── space-shuttle.svg
+│   │   │       ├── sort.svg
 │   │   │       ├── spa.svg
+│   │   │       ├── space-shuttle.svg
 │   │   │       ├── spell-check.svg
 │   │   │       ├── spider.svg
 │   │   │       ├── spinner.svg
@@ -1556,14 +1558,14 @@
 │   │   │       ├── sync-alt.svg
 │   │   │       ├── sync.svg
 │   │   │       ├── syringe.svg
+│   │   │       ├── table-tennis.svg
 │   │   │       ├── table.svg
 │   │   │       ├── tablet-alt.svg
-│   │   │       ├── table-tennis.svg
-│   │   │       ├── tablets.svg
 │   │   │       ├── tablet.svg
+│   │   │       ├── tablets.svg
 │   │   │       ├── tachometer-alt.svg
-│   │   │       ├── tags.svg
 │   │   │       ├── tag.svg
+│   │   │       ├── tags.svg
 │   │   │       ├── tape.svg
 │   │   │       ├── tasks.svg
 │   │   │       ├── taxi.svg
@@ -1575,16 +1577,16 @@
 │   │   │       ├── terminal.svg
 │   │   │       ├── text-height.svg
 │   │   │       ├── text-width.svg
+│   │   │       ├── th-large.svg
+│   │   │       ├── th-list.svg
+│   │   │       ├── th.svg
 │   │   │       ├── theater-masks.svg
 │   │   │       ├── thermometer-empty.svg
 │   │   │       ├── thermometer-full.svg
 │   │   │       ├── thermometer-half.svg
 │   │   │       ├── thermometer-quarter.svg
-│   │   │       ├── thermometer.svg
 │   │   │       ├── thermometer-three-quarters.svg
-│   │   │       ├── th-large.svg
-│   │   │       ├── th-list.svg
-│   │   │       ├── th.svg
+│   │   │       ├── thermometer.svg
 │   │   │       ├── thumbs-down.svg
 │   │   │       ├── thumbs-up.svg
 │   │   │       ├── thumbtack.svg
@@ -1654,16 +1656,16 @@
 │   │   │       ├── user-ninja.svg
 │   │   │       ├── user-nurse.svg
 │   │   │       ├── user-plus.svg
-│   │   │       ├── users-cog.svg
 │   │   │       ├── user-secret.svg
 │   │   │       ├── user-shield.svg
 │   │   │       ├── user-slash.svg
-│   │   │       ├── users-slash.svg
-│   │   │       ├── users.svg
-│   │   │       ├── user.svg
 │   │   │       ├── user-tag.svg
 │   │   │       ├── user-tie.svg
 │   │   │       ├── user-times.svg
+│   │   │       ├── user.svg
+│   │   │       ├── users-cog.svg
+│   │   │       ├── users-slash.svg
+│   │   │       ├── users.svg
 │   │   │       ├── utensil-spoon.svg
 │   │   │       ├── utensils.svg
 │   │   │       ├── vector-square.svg
@@ -1672,14 +1674,14 @@
 │   │   │       ├── venus.svg
 │   │   │       ├── vest-patches.svg
 │   │   │       ├── vest.svg
-│   │   │       ├── vials.svg
 │   │   │       ├── vial.svg
+│   │   │       ├── vials.svg
 │   │   │       ├── video-slash.svg
 │   │   │       ├── video.svg
 │   │   │       ├── vihara.svg
-│   │   │       ├── viruses.svg
 │   │   │       ├── virus-slash.svg
 │   │   │       ├── virus.svg
+│   │   │       ├── viruses.svg
 │   │   │       ├── voicemail.svg
 │   │   │       ├── volleyball-ball.svg
 │   │   │       ├── volume-down.svg
@@ -1697,11 +1699,11 @@
 │   │   │       ├── weight.svg
 │   │   │       ├── wheelchair.svg
 │   │   │       ├── wifi.svg
+│   │   │       ├── wind.svg
 │   │   │       ├── window-close.svg
 │   │   │       ├── window-maximize.svg
 │   │   │       ├── window-minimize.svg
 │   │   │       ├── window-restore.svg
-│   │   │       ├── wind.svg
 │   │   │       ├── wine-bottle.svg
 │   │   │       ├── wine-glass-alt.svg
 │   │   │       ├── wine-glass.svg
@@ -1728,6 +1730,8 @@
 │   │       └── fa-solid-900.woff2
 │   └── fontawesome-free-5.15.4-web.zip
 ├── docs
+│   ├── Theoretical Framework for Health and Fitness Assessment.md
+│   └── User Guide & Step-by-Step Assessment Protocol.md
 ├── download-assets.sh
 ├── generate-certs.sh
 ├── generate-icons.sh
@@ -1749,20 +1753,16 @@
 │   ├── icon-96x96.png
 │   └── icon.svg
 ├── install_mkcert.sh
-├── LICENSE
 ├── localhost-key.pem
 ├── localhost.pem
 ├── package.json
-├── README.md
 ├── server.js
 ├── tree.txt
 └── www
     ├── css
     │   ├── dataTables.min.css
     │   └── fontawesome.min.css
-    ├── fonts
-    │   ├── fa-solid-900.ttf
-    │   └── fa-solid-900.woff2
+    ├── favicon.ico
     ├── icons
     │   ├── apple-touch-icon.png
     │   ├── favicon-16.png
@@ -1782,11 +1782,29 @@
     │   └── icon.svg
     ├── index.html
     ├── js
-    │   ├── chart.min.js
+    │   ├── chart.js
     │   ├── dataTables.min.js
+    │   ├── i18n.js
     │   ├── jquery-3.7.0.min.js
-    │   └── zango.min.js
+    │   └── zangodb.min.js
     ├── manifest.json
-    └── sw.js
+    ├── sw.js
+    ├── tree.txt
+    └── webfonts
+        ├── fa-brands-400.eot
+        ├── fa-brands-400.svg
+        ├── fa-brands-400.ttf
+        ├── fa-brands-400.woff
+        ├── fa-brands-400.woff2
+        ├── fa-regular-400.eot
+        ├── fa-regular-400.svg
+        ├── fa-regular-400.ttf
+        ├── fa-regular-400.woff
+        ├── fa-regular-400.woff2
+        ├── fa-solid-900.eot
+        ├── fa-solid-900.svg
+        ├── fa-solid-900.ttf
+        ├── fa-solid-900.woff
+        └── fa-solid-900.woff2
 
-25 directories, 1765 files
+25 directories, 1783 files
